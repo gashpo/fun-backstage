@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon">
+    <title>【內頁】樣式一</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flatpickr.css" rel="stylesheet">
+    <link href="css/vue-select.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/table.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="navbar navbar-inverse fixed-top active" id="header">
+      <div class="navbar-brand"><a id="menu-toggle"><span class="material-icons">menu</span></a>
+        <h1><a href="./index.html"><span>fun市集</span>後台</a></h1>
+      </div>
+      <ul class="topbar-menu">
+        <li><span class="greeting">Have a Good Time</span></li>
+        <li>
+          <div class="btn-group">
+            <button class="dropdown-toggle topbar-btn" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons">notifications</span><span class="red-dot"></span></button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <ul class="dropdown-list">
+                <li class="dropdown-item"><a class="dropdown-info"><span class="b-caption">[審核通過] 小丸子帽子</span></a>
+                  <div class="date"><span>今天</span><span>16:55</span></div>
+                </li>
+                <li class="dropdown-item read">
+                  <div class="dropdown-info">
+                    <p class="b-caption">[審核通過] 小丸子鞋子</p>
+                  </div>
+                  <div class="date"><span>8-12</span></div>
+                </li>
+                <li class="dropdown-item read">
+                  <div class="dropdown-info">
+                    <p class="b-caption">[審核通過] 小丸子裙子</p>
+                  </div>
+                  <div class="date"><span>8-12</span></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="btn-group">
+            <button class="dropdown-toggle topbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons">person_outline</span></button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <ul class="dropdown-list">
+                <li class="dropdown-item read"><a class="dropdown-info" href="./login.html"><span class="b-caption">登出</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="container-fluid" id="main-content">
+      <div class="row">
+        <div class="expand" id="sidebar-wrapper">
+          <ul id="sidebar"></ul>
+          <div class="overlay show"></div>
+        </div>
+        <div class="col wrap">
+          <div class="row">
+            <div id="gotop"><span class="material-icons">arrow_upward</span></div>
+            <div class="col content-top">
+              <div class="breadcrum">fun市集後台>【內頁】樣式一</div>
+            </div>
+          </div>
+          <div class="row" id="app">
+            <div class="content animated fadeIn">
+              <ul class="nav nav-tabs">
+              </ul>
+              <form class="form-wrap" id="basic-form" @submit.prevent="saveForm()" method="post">
+                <div class="form-top">
+                  <h2 class="text-h3">【內頁】樣式一</h2>
+                </div>
+                <fieldset>
+                  <div class="text-h5">input 欄位</div>
+                  <div class="b-text-field d-block">
+                    <label>input 換行<span>*</span>
+                      <span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="文字備註內容"><span class="material-icons">info</span></span>
+                    </label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <input class="b-input max-w-none mr-none" type="text" placeholder="請輸入文字">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field">
+                    <label>input 不換行<span>*</span>
+                      <span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" data-html="true" title="&lt;p&gt;圖文備註內容&lt;/p&gt;&lt;img class='w-100' src='./img/demo/content-img.png' alt=''/&gt;"><span class="material-icons">info</span>
+                    </label>
+                    <div class="b-field-row mb-none">
+                      <input class="b-input mr-none" placeholder="請輸入文字" required>
+                    </div>
+                  </div>
+                  <div class="b-text-field">
+                    <label>input 不換行<span>*</span></label>
+                    <div class="b-field-row mb-none">
+                      <input class="b-input mr-none" placeholder="請輸入文字" required>
+                    </div>
+                  </div>
+                  <div class="b-text-field">
+                    <label>input 不換行<span>*</span></label>
+                    <div class="b-field-row mb-none">
+                      <input class="b-input mr-none" required placeholder="請輸入文字">
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>輸入後標題跟隨欄位框線置上<span>*</span></label>
+                    <div class="b-field-group"> 
+                      <div class="b-field-row">
+                        <div class="b-input-wrap inner-label">
+                          <input class="b-input mb-none" type="text" placeholder="請輸入文字" required>
+                          <label>欄位標題一</label>
+                        </div>
+                        <div class="b-input-wrap inner-label">
+                          <input class="b-input mb-none" type="text" placeholder="請輸入文字" required>
+                          <label>欄位標題二</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>字數限制<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <input class="b-input width-400 max-w-none mr-none" type="text" v-model="productN" :maxlength="productName.maxlength" :placeholder="productName.placeholder" required><span class="b-input-hint">({{ productN.length }}/{{productName.maxlength}})</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>input 前後有字<span>*</span>
+                      <span class="tooltip-btn pl-xs"  data-toggle="tooltip" data-placement="right" data-html="true" :title="previewBackpack"><span class="material-icons">info</span></span>
+                    </label>
+                    <div class="b-field-row mb-none">
+                      <div class="b-input-wrap gamapay">新台幣</div>
+                      <input class="b-input mr-none" type="number" placeholder="請輸入文字">
+                      <div class="b-input-wrap gamapay pl-xs">元</div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>Tag input<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <input type="text" class="width-400" :value="freeTag" data-role="tagsinput" placeholder="新增標籤">
+                        </div>
+                        <div class="toolbar"><button type="button" class="b-btn-primary outline ml-none" data-size="sm"><span>新增</span></button></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>checking<span>*</span>
+                      <a href="#" target="_blank" class="label-link">查詢 link</a>
+                    </label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <input class="b-input m-none" type="text" v-model="ticketID" placeholder="正值為1234" required>
+                          <p class="wrong" v-if="ticketIDState === 'fail'">*此票券id無法使用</p>
+                        </div>
+                        <button class="b-btn-primary ml-none mb-xs outline" data-size="md" type="button" :data-loading="btnLoading.search" @click="checkID">檢查</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>input group01<span>*</span></label>
+                    <div class="b-field-group">
+                      <template>
+                        <div class="b-field-row mb-xs pl-md" v-for="item,idx in attributeG.attribute">
+                          <label class="pt-xs pr-md">{{idx+1}}. {{ item.label }}</label>
+                          <div class="b-input-wrap inner-label">
+                            <input class="b-input m-none" type="text" placeholder="欄位標題" @change="customUpdate = true" required>
+                            <label>欄位標題</label>
+                          </div>
+                        </div>
+                        <div class="b-field-row mb-none pl-md animated fadeIn">
+                          <div class="b-checkbox pt-xxs">
+                            <input type="checkbox" id="customName" checked>
+                            <label class="pr-xs" for="customName">checkbox</label>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>input group02<span>*</span></label>
+                    <div class="b-field-group"> 
+                      <div class="b-field-row">
+                        <div class="b-input-wrap inner-label">
+                          <input class="b-input mb-none" type="text" v-model="toReal.input" placeholder="請輸入文字" required>
+                          <label>欄位標題一<span>*</span></label>
+                          <span class="b-input-hint">({{toReal.input.length}}/20)</span>
+                        </div>
+                        <div class="b-input-wrap inner-label">
+                          <input class="b-input mb-none" type="text" placeholder="請輸入文字" required>
+                          <label>欄位標題二<span>*</sptoRealn></label>
+                        </div>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-input-wrap inner-label">
+                          <input class="b-input" type="text" placeholder="請輸入文字" required>
+                          <label>欄位標題三<span>*</span></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block" >
+                    <label>disabled<span>*</span></label>
+                    <div class="b-input-wrap">
+                      <input class="b-input id" type="number" value="12789137987163871537861791" disabled>
+                    </div>
+                  </div>
+									<div class="b-text-field d-block m-top-30">
+										<label>copy</label>
+										<div class="b-field-row mb-none">
+											<div class="d-flex align-items-start">
+												<input class="b-input id" id="copyContent" readonly :value="copy" v-model="copy">
+												<button class="b-btn-default outline mb-none" data-size="sm" type="button" @click="copyID('#copyContent')"> 
+													<template v-if="itemCodeCopyBtn"><span>已複製 </span></template>
+													<template v-else> <span class="material-icons ml-none mr-xxs fz-sm">copy</span><span>複製</span></template>
+												</button>
+											</div>
+										</div>
+									</div>
+                  <hr>
+                  <div class="text-h5">select 欄位</div>
+                  <div class="b-text-field d-block">
+                    <label>單選<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <v-select class="b-select" :options="select.option" v-model="select.value" autocomplete="off" :clearable="false" placeholder="請選擇" required></v-select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>多項單選＋商品預覽圖<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <v-select class="b-select" :options="categoryOption" v-model="category.value" :clearable="false"></v-select>
+                        </div>
+                        <div class="b-input-wrap">
+                          <v-select class="b-select" :options="category.value.option" v-model="subCategory.value" placeholder="請選擇" :clearable="false"></v-select>
+                        </div>
+                        <v-select class="b-select" :options="assetList" v-model="asset" placeholder="請選擇" :clearable="false"></v-select>
+                      </div>
+                      <div class="b-field-row mb-none">
+                        <div class="img-preview mb-md" data-type="marketSmall"><img src="./img/product-img.jpg" alt="" v-if="asset" key="imgPriview">
+                          <div class="d-flex align-items-center justify-content-center h-100 text-A" v-else><span>商品預覽</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>多選<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <v-select class="b-select width-400" multiple v-model="areaGroup.value" :options="areaGroup.option" autocomplete="off" placeholder="請選擇"></v-select>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">textarea 欄位</div>
+                  <div class="b-text-field d-block">
+                    <label>textarea<span>*</span></label>
+                    <div class="b-field-row">
+                      <div class="b-input-wrap">
+                        <textarea class="b-textarea" rows="4" cols="48" placeholder="請輸入文字" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>字數限制<span>*</span></label>
+                    <div class="b-field-row">
+                      <div class="b-input-wrap">
+                        <textarea class="b-textarea" rows="4" cols="48" v-model="productDescF" :placeholder="productDesc.placeholder" :maxlength="productDesc.maxlength" required></textarea><span class="b-input-hint">({{ productDescF.length }}/{{productDesc.maxlength}})</span>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">radio 欄位</div>
+                  <div class="b-text-field d-block">
+                    <label>radio 不換行<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="publicY" value="publicY" name="radio01" checked>
+                          <label for="publicY">是</label>
+                        </div>
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="publicF" value="publicF" name="radio01">
+                          <label for="publicF">否</label>
+                        </div>
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="publicN" value="publicN" name="radio01">
+                          <label for="publicN">不確定</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block mb-md">
+                    <label>radio＋input<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-radio">
+                          <input type="radio" id="all" value="all" v-model="formData.limitation.value">
+                          <label for="all">不限</label>
+                        </div>
+                        <div class="b-radio d-flex">
+                          <input type="radio" id="limited" value="limited" v-model="formData.limitation.value">
+                          <label for="limited">
+                            <input class="b-input m-none width-150" type="number" :disabled="formData.limitation.value !== 'limited'" v-model="formData.limitation.count" placeholder="總共最多數量"><span class="pl-xs">個/會員</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>radio group<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click" v-model="checkWay" value="click" name="click">
+                          <label for="click">樣式一</label>
+                        </div>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click02" v-model="checkWay" value="click02" name="click02">
+                          <label for="click02">樣式二</label>
+                          <input class="b-input mb-none mx-sm" id="eventStart" type="text" :disabled="checkWay !== 'click02'" placeholder="請輸入文字">
+                        </div>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click03" v-model="checkWay" value="click03" name="click03">
+                          <label for="click03">樣式三</label>
+                        </div>
+                        <div class="b-field-row pl-lg mb-none">
+                          <label class="pr-sm pt-xxs">second radio</label>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="fixNoBC" :disabled="checkWay !== 'click03'" v-model="click03" value="fixNoBC" name="fixNoBC">
+                            <label for="fixNoBC">否</label>
+                          </div>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="fixBC" :disabled="checkWay !== 'click03'" v-model="click03" value="fixBC" name="fixBC">
+                            <label for="fixBC">是</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click04" v-model="checkWay" value="click04" name="click04">
+                          <label for="click04">樣式四</label>
+                          <input class="b-input mb-none mx-sm width-350" id="eventStart" type="text" :disabled="checkWay !== 'click04'" placeholder="請輸入文字">
+                        </div>
+                        <div class="b-field-row pl-lg mb-none">
+                          <label class="pr-sm pt-xxs">second radio</label>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="noBC" :disabled="checkWay !== 'click04'" v-model="click04.showBarCode" value="noBC" name="noBC">
+                            <label for="noBC">bf! 內開啟</label>
+                          </div>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="showBC" :disabled="checkWay !== 'click04'" v-model="click04.showBarCode" value="showBC" name="showBC">
+                            <label for="showBC">外部開啟</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click05" v-model="checkWay" value="click05" name="click05">
+                          <label for="click05">樣式五</label>
+                        </div>
+                        <input class="b-input width-350" type="text" :disabled="checkWay !== 'click05'" placeholder="請輸入文字">
+                        <input class="b-input width-350" type="text" :disabled="checkWay !== 'click05'" placeholder="請輸入文字">
+                      </div>
+                      <div class="b-field-row">
+                        <div class="b-radio mb-none">
+                          <input type="radio" id="click06" v-model="checkWay" value="click06" name="click06">
+                          <label for="click06">樣式六</label>
+                        </div>
+                        <div class="b-input-wrap">
+                          <input class="b-input width-350" type="text" :disabled="checkWay !== 'click06'" v-model="backpackLink.value" :maxlength="backpackLink.maxlength" :placeholder="backpackLink.placeholder" required>
+                        </div>
+                        <div class="b-field-row pl-lg">
+                          <label class="pr-sm pt-xxs">second radio</label>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="noBF" :disabled="checkWay !== 'click06'" v-model="click06.showBarCode" value="noBF" name="noBF">
+                            <label for="noBF">bf! 內開啟</label>
+                          </div>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="showOut" :disabled="checkWay !== 'click06'" v-model="click06.showBarCode" value="showOut" name="showOut">
+                            <label for="showOut">外部開啟</label>
+                          </div>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="showDL" :disabled="checkWay !== 'click06'" v-model="click06.showBarCode" value="showDL" name="showDL">
+                            <label for="showDL">Deeplink</label>
+                          </div>
+                        </div>
+                        <div class="b-field-row pl-lg">
+                          <label class="pr-sm pt-xxs">input</label>
+                          <div class="b-input-wrap">
+                            <input class="b-input" type="text" :disabled="checkWay !== 'click06'" v-model="backpackLink2.value" :maxlength="backpackLink2.maxlength" :placeholder="backpackLink2.placeholder" required>
+                            <span class="b-input-hint">({{ backpackLink2.value.length }}/{{backpackLink2.maxlength}})</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">checkbox</div>
+                  <div class="b-text-field d-block">
+                    <label>checkbox 不換行<span>*</span></label>
+                    <div class="b-field-row mb-md">
+                      <div class="b-checkbox mb-none">
+                        <input type="checkbox" id="checkbox1" value="checkbox1" name="checkBox" checked>
+                        <label for="checkbox1">選項一</label>
+                      </div>
+                      <div class="b-checkbox mb-none">
+                        <input type="checkbox" id="checkbox2" value="checkbox2" name="checkBox">
+                        <label for="checkbox2">選項二</label>
+                      </div>
+                      <div class="b-checkbox mb-none">
+                        <input type="checkbox" id="checkbox3" value="checkbox3" name="checkBox">
+                        <label for="checkbox3">選項三</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block" key="listingplace">
+                    <label>checkbox group<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row mb-none">
+                        <div class="b-checkbox">
+                          <input type="checkbox" id="webstore" v-model="route.webstore" required>
+                          <label class="pr-xs" for="webstore">樣式一</label>
+                        </div>
+                      </div>
+                      <div class="b-field-row mb-none">
+                        <div class="b-checkbox">
+                          <input type="checkbox" id="store" v-model="route.store" disabled required>
+                          <label class="pr-xs" for="store">樣式二</label>
+                        </div>
+                      </div>
+                      <div class="b-field-row mb-none">
+                        <div class="b-checkbox">
+                          <input type="checkbox" id="inappstore" v-model="route.inappstore" required>
+                          <label class="pr-xs" for="inappstore">樣式三</label>
+                        </div>
+                        <div class="b-field-row pl-lg">
+                          <label class="pr-sm pt-xxs">radio</label>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="bfCoinY" :disabled="route.inappstore !== true"  v-model="bfCoinUse" value="bfCoinY" name="bfCoinY" >
+                            <label for="bfCoinY">是</label>
+                          </div>
+                          <div class="b-radio mb-none">
+                            <input type="radio" id="bfCoinN" :disabled="route.inappstore !== true" v-model="bfCoinUse" value="bfCoinN" name="bfCoinN" >
+                            <label for="bfCoinN">否</label>
+                          </div>
+                        </div>
+                        <template v-if="route.inappstore === true && bfCoinUse === 'bfCoinY'" key="bfCoinFee">
+                          <div class="b-field-row pl-lg">
+                            <label class="pr-sm pt-xxs">input</label>
+                            <div class="b-input-wrap">
+                              <input class="b-input" type="number" v-model="bfCoinUsePercentage" oninput="if(value>100)value=100;if(value.length>4)value=value.slice(0,4);if(value<0)value=0" required> %
+                            </div>
+                          </div>
+                          <div class="b-field-row pl-lg">
+                            <div class="alert alert-warning"><span class="material-icons">info </span>由於 IAP 議題，在 in App 商城內顯示的價格，將會額外加上 38% 手續費</div>
+                          </div>
+                        </template>
+                        <template v-if="route.inappstore === true && bfCoinUse === 'bfCoinN'" key="bfClubLink">
+                          <div class="b-field-row pl-lg">
+                            <label class="pr-sm pt-xxs">input</label>
+                            <div class="b-input-wrap">
+                              <input class="b-input width-350" type="text" v-model="bfClubLink.value" :maxlength="bfClubLink.maxlength" :placeholder="bfClubLink.placeholder" required>
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">datepicker/timepicker</div>
+                  <div class="b-text-field d-block">
+                    <label>開始時間<span>*</span></label>
+                    <div class="b-field-row">
+                      <div class="b-input-wrap">
+                        <input class="b-input mr-none" id="dateStart" type="text" v-model="publishStart" placeholder="開始日期">
+                      </div>
+                      <div class="b-input-wrap">
+                        <input class="b-input mr-none" id="dateStartTime" type="text" v-model="publishStartTime" placeholder="開始時間">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>結束時間<span>*</span></label>
+                    <div class="b-field-row">
+                      <div class="b-input-wrap">
+                        <input class="b-input mr-none" id="dateEnd" type="text" v-model="publishEnd" placeholder="結束日期">
+                      </div>
+                      <div class="b-input-wrap">
+                        <input class="b-input mr-none" id="dateEndTime" type="text" v-model="publishEndTime" placeholder="結束時間">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>日期＋時間區間</label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <input class="b-input mr-none" id="dateRangeStart" type="text" placeholder="開始時間" v-model="searchDateStart"><span class="p-xs">~</span>
+                        <input class="b-input" id="dateRangeEnd" type="text" placeholder="結束時間" v-model="searchDateEnd">
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">upload</div>
+                  <div class="b-text-field d-block">
+                    <label>上傳單張圖片<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row mb-none">
+                        <label class="b-btn-primary outline ml-none" for="previewImg" data-size="md">選擇檔案
+                          <input type="file" id="previewImg" accept=".png, .jpg, .jpeg" @change="backpackImgPreview">
+                        </label>
+                        <p class="mx-sm mt-xxs" v-if="previewImg.name">{{ previewImg.name }} ({{ previewImg.size }}KB)</p>
+                        <span class="b-caption d-block pt-xs">670x376 .jpg or .png (<100KB)</span>
+                      </div>
+                      <div class="b-field-row mb-none">
+                        <template v-if="previewImg.value">
+                          <div class="img-preview mb-md" data-type="backpack"><img :src="previewImg.value"></div>
+                        </template>
+                        <template v-if="previewImg.alert">
+                          <div class="alert alert-danger">{{ previewImg.name }} {{ previewImg.alert }}</div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block pt-xs">
+                    <label>上傳多張圖片</label>
+                    <div class="b-field-group"> 
+                      <div class="b-field-row mb-xs">
+                        <label class="b-btn-primary outline ml-none" for="detailImgUpload" data-size="md">選擇檔案
+                          <input type="file" id="detailImgUpload" accept=".png, .jpg, .jpeg" multiple="multiple">
+                        </label>
+                        <p class="b-caption pt-xs">最多上傳五張，大小不得超過 1 MB</p>
+                      </div>
+                      <div class="b-field-row">
+                        <template v-for="(item,idx) in productDescImg">
+                          <div class="upload-img-preview"><img class="preview" data-size="small" :src="item.src">
+                            <ul> 
+                              <li class="b-caption">{{item.name}}</li>
+                              <li class="b-caption">大小: {{item.size}} KB</li>
+                            </ul>
+                            <label class="b-btn-secondary outline imageChange" :for="'changeFile'+idx" data-size="xs" type="button">替換圖片
+                              <input type="file" :id="'changeFile'+idx" accept=".png, .jpg, .jpeg" :data-idx="idx" multiple="multiple">
+                            </label><br>
+                            <button class="b-btn-danger outline" data-size="xs" type="button" @click="removeImg(idx)">移除圖片</button>
+                          </div>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>上傳PIN碼<span>*</span></label>
+                    <div class="b-field-group"> 
+                      <div class="b-field-row">
+                        <label class="b-btn-primary outline ml-none" for="pinUpload" data-size="md">上傳檔案
+                          <input type="file" id="pinUpload" accept=".csv" @change="replenishmentFile">
+                        </label>
+                        <p class="b-caption pt-xs" v-if="fileName">{{ fileName }}</p>
+                        <p class="b-caption pt-xs">.csv 檔案大小 < 1MB</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>上傳PIN碼數量</label>
+                    <div class="b-input-wrap">
+                      <p class="readonly pt-sm pb-none" v-if="uploadPinCount">{{ uploadPinCount.length }}</p>
+                      <p class="readonly text-A pt-sm pb-non" v-else>-</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">新增 list group</div>
+                  <div class="b-text-field d-block">
+                    <label>list group</label>
+                    <div class="b-field-group">
+                      <template v-for="item, idx in itemProperty">
+                        <div class="d-flex mb-none">
+                          <div class="p-xs text-A">{{idx+1}}.</div>
+                          <div class="b-field-row">
+                            <div class="b-input-wrap inner-label">
+                              <input class="b-input" type="text" placeholder="欄位標題一">
+                              <label>欄位標題一</label>
+                            </div>
+                            <input class="b-input mr-none" id="dateRangeStart02" type="text" placeholder="開始時間" v-model="searchDateStart02"><span class="p-xs">~</span>
+                            <input class="b-input" id="dateRangeEnd02" type="text" placeholder="結束時間" v-model="searchDateEnd02">
+                            <div class="b-input-wrap inner-label">
+                              <input class="b-input" type="text" placeholder="欄位標題二">
+                              <label>欄位標題二</label>
+                            </div>  
+                            <div class="button-icon" @click="removeField('itemProperty',idx)"><span class="material-icons">delete</span></div>
+                          </div>
+                        </div>
+                      </template><span class="b-btn-primary text pl-sm mb-lg" size="md" @click="addField('itemProperty')"><span class="material-icons">add</span>增加</span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="text-h5">無編輯欄位</div>
+                  <div class="detail-head">
+										<div class="b-text-field">
+											<label>不換行標題一<span>*</span></label>
+											<div class="b-field-group">
+												<div class="b-field-row">
+													<div class="b-input-wrap">
+														<p class="readonly">data</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="b-text-field">
+											<label>不換行標題二<span>*</span></label>
+											<div class="b-field-group">
+												<div class="b-field-row">
+													<div class="b-input-wrap">
+														<p class="readonly">2022/02/22 16:18</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="b-text-field">
+											<label>不換行標題三<span>*</span></label>
+											<div class="b-field-group">
+												<div class="b-field-row">
+													<div class="b-input-wrap">
+														<p class="readonly"><span class="badge-info">tag</span></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="b-text-field">
+											<label>不換行標題四<span>*</span></label>
+											<div class="b-field-group">
+												<div class="b-field-row">
+													<div class="b-input-wrap">
+														<p class="readonly">$5,000</p>
+													</div>
+												</div>
+											</div>
+										</div>
+                    <div class="b-text-field">
+											<label>不換行標題五<span>*</span></label>
+											<div class="b-field-group">
+												<div class="b-field-row">
+													<div class="b-input-wrap">
+														<p class="readonly">KJHEO7823029357</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                  <div class="b-text-field d-block">
+                    <label>換行標題<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <p class="readonly">網址設定：https://www.google.com/</p>
+                        <p class="readonly">連結類型：bf!內開啟</p>
+                      </div>
+                      <div class="b-field-row">
+                        <div class="alert alert-warning"><span class="material-icons">info</span>重要提示區塊</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>換行標題<span>*</span></label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <p class="readonly">換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文換行內文</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+                    <label>tag title</label>
+                    <div class="b-field-group">
+                      <div class="b-field-row">
+                        <div class="b-input-wrap">
+                          <span class="badge-contrast">tag01</span>
+                          <span class="badge-contrast">tag02</span>
+                          <span class="badge-contrast">tag03</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="b-text-field d-block">
+										<label>圖片<span>*</span></label>
+										<div class="b-field-group"> 
+											<div class="b-field-row">
+												<div class="upload-img-preview">
+													<img class="preview" data-size="small" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/maxresdefault-1590898973.jpg">
+													<ul> 
+														<li class="b-caption">截圖-2023-02-01-下午2.25.37.jpg</li>
+														<li class="b-caption">大小：49.83 KB</li>
+													</ul>
+												</div>
+                        <div class="upload-img-preview">
+													<img class="preview" data-size="small" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/maxresdefault-1590898973.jpg">
+													<ul> 
+														<li class="b-caption">截圖-2023-02-01-下午2.25.37.jpg</li>
+														<li class="b-caption">大小：49.83 KB</li>
+													</ul>
+												</div>
+                      </div>
+										</div>
+									</div>
+                  <div class="table">
+                    <table width="100%"> 
+                      <thead class="bg-gray"> 
+                        <tr> 
+                          <td class="w-3">欄位一</td>
+                          <td class="w-3">欄位二</td>
+                          <td class="w-3">欄位三</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="w-3"><a href="#" target="_blank">[熱門] 經典特色小丸子帽子</a></td>
+                          <td class="w-3">道具/小丸子/襪子</td>
+                          <td class="w-3">$ 1,600</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="table">
+                    <table width="100%"> 
+                      <thead class="bg-gray"> 
+                        <tr> 
+                          <td class="w-4">欄位四</td>
+                          <td class="w-4">欄位五</td>
+                          <td class="w-4">欄位六</td>
+                          <td class="w-4">欄位七</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="w-4">小丸子扇子<p class="notes">* 註解說明</p></td>
+                          <td class="w-4">ATOM001</td>
+                          <td class="w-4">aaa@gmail.com</td>
+                          <td class="w-4">台北市內湖區OO路OO號O樓</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="table table-list marginTop-1rem">
+                    <table class="w-100">
+                      <thead> 
+                        <tr> 
+                          <td class="w-5rem">#</td>
+                          <td>資產ID</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>76543</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>76544</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <hr>
+                  <div class="b-text-field d-block">
+                    <div class="b-field-row">
+                      <div class="dot-list-wrap">
+                        <div class="more" id="more" @click="toggle">
+                          <template v-if="isShow">
+                            展開完整記錄
+                            <span class="material-icons">expand_more</span>
+                          </template>
+                          <template v-else>
+                            收合記錄
+                            <span class="material-icons">expand_less</span>
+                          </template>
+                        </div>
+                        <ul class="box">
+                          <template v-for="item,idx in history" >
+                            <li class="dot-list first" v-if="idx === 0"><span class="dot-list-label">{{item.activity}}</span><span class="b-caption dot-list-caption">{{item.time}}</span></li>
+                            <li class="dot-list last" v-else-if="(idx+1) === history.length"><span class="dot-list-label">{{item.activity}}</span><span class="b-caption dot-list-caption">{{item.time}}</span></li>
+                            <li class="dot-list" v-else><span class="dot-list-label">{{item.activity}}</span><span class="b-caption dot-list-caption">{{item.time}}</span></li>
+                          </template>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="b-form-button">
+                  <button class="b-btn-secondary text" data-size="lg" type="button" onclick="window.location.href='#'">查看返回用</button>
+                  <button class="b-btn-secondary outline" data-size="lg" type="button" onclick="window.location.href='#'">取消</button>
+                  <!-- 草稿建立成功用 -->
+                  <button class="b-btn-primary" data-size="lg" type="button" :disabled="saveBtnStatus.disabled" data-toggle="modal" @click="saveForm" >{{saveBtnStatus.label}}</button>
+                  <!-- 草稿建立失敗用 -->
+                  <!-- <button class="b-btn-primary" data-size="lg" type="button" :disabled="saveBtnStatus.disabled" data-toggle="modal" data-target="#failConfirm" @click="saveForm">{{saveBtnStatus.label}}</button> -->
+                </div>
+              </form>
+              <!-- popup 草稿建立成功 -->
+              <div class="modal fade" id="successConfirm" data-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-img" data-type="warning"></div>
+                  <div class="modal-content">
+                    <div class="modal-body text-center">
+                      <h3 class="modal-title">草稿建立成功</h3>
+                      <p>儲存後將於設定的刊登開始發布。</p>
+                    </div>
+                    <div class="modal-footer justify-content-center pt-none">
+                      <button class="b-btn-default" data-size="lg" type="button" onclick="window.location= './3.1_selling-list.html'">確定</button>
+                      <button class="b-btn-default text no-underline" data-size="md" type="button" data-dismiss="modal">關閉</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- popup 草稿建立失敗 -->
+              <div class="modal fade" id="failConfirm" data-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-img" data-type="warning"></div>
+                  <div class="modal-content">
+                    <div class="modal-body text-center">
+                      <h3 class="modal-title">草稿建立失敗</h3>
+                      <p>請於確認失敗原因後，重新再次儲存草稿</p>
+                    </div>
+                    <div class="modal-footer justify-content-center pt-none">
+                      <button class="b-btn-danger" data-size="lg" type="button" onclick="window.location.href='./3.1_selling-list.html'" data-dismiss="modal">確認</button>
+                      <button class="b-btn-default text no-underline" data-size="md" type="button" onclick="closeModal('#failConfirm', 'Y')">取消</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="copyright">&copy;2021 GASH Co, Ltd. All Right Reserved. </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <!-- jQuery-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap Core JavaScript-->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/flatpickr.js"></script>
+    <script src='js/bootstrap-tagsinput.min.js'></script>
+    <!-- multiselector-->
+    <script src="js/vue-select.js"></script>
+    <!-- Custom JavaScript-->
+    <script src="js/sidebar.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+      // currentPage('上架清單');
+      var jQfn = function (){
+        //開始＆結束時間
+        flatpickr('#dateStart',{
+          static: true,
+          dateFormat: "Y/m/d",
+          minDate: new Date(),
+        })
+        flatpickr('#dateEnd',{
+          static: true,
+          dateFormat: "Y/m/d",
+          minDate: vm.publishStart,
+        })
+        flatpickr('#dateStartTime',{
+          enableTime: true,
+          enableSecond: true,
+          noCalendar: true,
+          dateFormat: "H:i",
+          time_24hr: true
+        })
+        flatpickr('#dateEndTime',{
+          enableTime: true,
+          enableSecond: true,
+          noCalendar: true,
+          dateFormat: "H:i",
+          time_24hr: true
+        })
+        flatpickr('#dateRangeStart',{
+          static: true,
+          enableTime: true,
+          enableSeconds: true,
+          dateFormat: "Y/m/d H:i:ss",
+          minDate: new Date(),
+        })
+        flatpickr('#dateRangeEnd',{
+          static: true,
+          enableSeconds: true,
+          enableTime: true,
+          dateFormat: "Y/m/d H:i:ss",
+          minDate: vm.searchDateStart,
+        })
+        flatpickr('#dateRangeStart02',{
+          static: true,
+          enableTime: true,
+          enableSeconds: true,
+          dateFormat: "Y/m/d H:i:ss",
+          minDate: new Date(),
+        })
+        flatpickr('#dateRangeEnd02',{
+          static: true,
+          enableSeconds: true,
+          enableTime: true,
+          dateFormat: "Y/m/d H:i:ss",
+          minDate: vm.searchDateStart02,
+        })
+
+        //多張圖片預覽
+        $("#main-content").on("change", "#detailImgUpload", function (e){
+          let file = e.target.files;
+          for(let i=0;i< 5; i++) {
+            if(vm.productDescImg.length<5) {
+              if(e.target.files === undefined) {return}
+              let imgData = {}
+
+              imgData.name = file[i].name
+              imgData.size = size_format_float(file[i].size / 1024, 2);
+              imgData.src = URL.createObjectURL(file[i]);
+              vm.productDescImg.push(imgData)
+            }
+          }
+        })
+        // 圖片上傳修改
+        $("#main-content").on("change", ".imageChange", function (e){
+          let file = e.target.files;
+          let imgId = e.target.getAttribute("data-idx")
+          let imgData = {}
+          vm.productDescImg[imgId].name = file[0].name
+          vm.productDescImg[imgId].size = size_format_float(file[0].size / 1024, 2);
+          vm.productDescImg[imgId].src = URL.createObjectURL(file[0]);
+        })
+      }
+      
+      var vm = new Vue({
+          el: '#app',
+          data() {
+            return {
+              previewBackpack: `
+                <p>資產在背包內呈現所使用的圖片</p>
+                <p>圖片安全範圍示意</p>
+                <img class='w-100' src='./img/demo/safe.png', alt=''/>
+                <p>背包資產細節</p>
+                <img class='w-100' src='./img/demo/backpack-list.png', alt=''/>
+                <img class='w-100' src='./img/demo/backpack-detail.png', alt=''/>
+              `,
+
+              //input
+              productN: '',
+              productName: {
+                placeholder: '請輸入文字',
+                maxlength: 22,
+                validation: ''
+              },
+              freeTag: [],
+              ticketID: '',
+              ticketIDState: '',
+              btnLoading: {
+                search: false,
+                refund: false,
+                sendRefund: false,
+              },
+              attributeG: {
+                  name: '預設',
+                  default: true,
+                  attribute: [
+                    {label: '等級', value: "1"},
+                    {label: '顏色', value: "黃色"},
+                    {label: '條件', value: "呼朋引伴"}
+                  ]
+              },
+              toReal: {
+                  type: false,
+                  input: '',
+              },
+              copy:'12789137987163871537861791',
+              itemCodeCopyBtn: false,
+
+              //select
+              select: {
+                option: [
+                  {value: 'select1',label: '選項一'},
+                  {value: 'select2',label: '選項二'},
+                  {value: 'select3',label: '選項三'},
+                ],
+              },
+              category: {
+                value: {
+                  value: 'ticket', 
+                  label: '票券',
+                  option: [
+                    {value: 'ticket1', label: '票券分類一'},
+                    {value: 'ticket2', label: '票券分類二'},
+                    {value: 'ticket3', label: '票券分類三'}
+                  ]
+                },
+                validation: ''
+              },
+              subCategory: {
+                // value: {value: 'maruko', label: '小丸子'},
+              },
+              categoryOption: [
+                { 
+                  value: 'item', label: '道具',
+                  option: [
+                    {value: 'game1', label: '道具一'},
+                    {value: 'game2', label: '道具二'},
+                    {value: 'game3', label: '道具三'}
+                  ]  
+                },
+                { 
+                  value: 'ticket', label: '票券',
+                  option: [
+                    {value: 'ticket1', label: '票券分類一'},
+                    {value: 'ticket2', label: '票券分類二'},
+                    {value: 'ticket3', label: '票券分類三'}
+                  ] 
+                },
+                { 
+                  value: 'collection', label: '收藏品',
+                  option: [
+                    {value: 'collection1', label: '收藏品類別一'},
+                    {value: 'collection2', label: '收藏品類別二'},
+                    {value: 'collection3', label: '收藏品類別三'}
+                  ]  
+                }
+              ],
+              category: {
+                value: {
+                  value: 'ticket', 
+                  label: '票券',
+                  option: [
+                    {value: 'ticket1', label: '票券分類一'},
+                    {value: 'ticket2', label: '票券分類二'},
+                    {value: 'ticket3', label: '票券分類三'}
+                  ]
+                },
+                validation: ''
+              },
+              subCategory: {
+                // value: {value: 'maruko', label: '小丸子'},
+              },
+              categoryOption: [
+                { 
+                  value: 'item', label: '道具',
+                  option: [
+                    {value: 'game1', label: '道具一'},
+                    {value: 'game2', label: '道具二'},
+                    {value: 'game3', label: '道具三'}
+                  ]  
+                },
+                { 
+                  value: 'ticket', label: '票券',
+                  option: [
+                    {value: 'ticket1', label: '票券分類一'},
+                    {value: 'ticket2', label: '票券分類二'},
+                    {value: 'ticket3', label: '票券分類三'}
+                  ] 
+                },
+                { 
+                  value: 'collection', label: '收藏品',
+                  option: [
+                    {value: 'collection1', label: '收藏品類別一'},
+                    {value: 'collection2', label: '收藏品類別二'},
+                    {value: 'collection3', label: '收藏品類別三'}
+                  ]  
+                }
+              ],
+              asset: '',
+              assetList: [
+                {value: 'itemId01',label: '小丸子帽子',state: 1},
+                {value: 'itemId02',label: '小丸子鞋子',state: 1},
+                {value: 'itemId03',label: '小丸子裙子',state: 1},
+                {value: 'itemId04',label: '小丸子褲子',state: 1},
+                {value: 'itemId05',label: '小丸子襪子',state: 1},
+                {value: 'itemId06',label: '小丸子碎片',state: 1},
+                {value: 'itemId07',label: '小丸子鉛筆盒',state: 1},
+                {value: 'itemId08',label: '小丸子書包',state: 1},
+                {value: 'itemId09',label: '小丸子爺爺',state: 1},
+                {value: 'itemId10',label: '小丸子奶奶',state: 1},
+              ],
+              areaGroup: {
+                value: [],
+                validation: true,
+                option: [
+                  {label: '臺北市', value: 'TaipeiCity', disabled: true},
+                  {label: '基隆市', value: 'Keelung', disabled: false},
+                  {label: '新北市', value: 'NewTaipeiCity', disabled: false},
+                  {label: '宜蘭縣', value: 'YilanCounty', disabled: false},
+                  {label: '桃園市', value: 'TaoyuanCity', disabled: false},
+                  {label: '新竹市', value: 'HsinchuCity', disabled: false},
+                  {label: '新竹縣', value: 'HsinchuCounty', disabled: false},
+                  {label: '苗栗縣', value: 'MiaoliCounty', disabled: false},
+                  {label: '台中市', value: 'Taichung', disabled: false},
+                  {label: '彰化縣', value: 'ChanghuaCounty', disabled: false},
+                  {label: '南投縣', value: 'NantouCounty', disabled: false},
+                  {label: '嘉義市', value: 'ChiayiCity', disabled: false},
+                  {label: '嘉義縣', value: 'ChiayiCounty', disabled: false},
+                  {label: '雲林縣', value: 'YunlinCounty', disabled: false},
+                  {label: '台南市', value: 'TainanCity', disabled: false},
+                  {label: '高雄市', value: 'KaohsiungCity', disabled: false},
+                  {label: '屏東縣', value: 'PingtungCounty', disabled: false},
+                  {label: '台東縣', value: 'TaitungCounty', disabled: false},
+                  {label: '花蓮縣', value: 'HualienCounty', disabled: false},
+                ],
+              },
+
+              //textarea
+              productDescF: '包含行銷文字的上架描述的說明會顯示在這裡。每次上架描述不同的行銷用語或者注意事項可以打在這裡。',
+              productDesc: {
+                placeholder: '請輸入商品詳細說明',
+                maxlength: 1000,
+                validation: ''
+              },
+
+              //radio
+              // limitation: {
+              //   value: 'all',
+              //   count: 1
+              // },
+              checkWay: 'click',
+              click03: 'fixNoBC',
+              click04: {
+                showBarCode: 'noBC',
+                processGet: 'nosetProcess',
+              },
+              click06: {
+                showBarCode: 'noBF',
+                processGet: 'nosetProcess',
+              },
+              backpackLink: {
+                value: '',
+                active: 'backpackLinkF',
+                placeholder: '請輸入活動網址',
+                maxlength: 1000,
+                opentype: 'inner'
+              },
+              backpackLink2: {
+                value: '',
+                active: 'backpackLinkF',
+                placeholder: '請輸入文字',
+                maxlength: 4,
+              },
+
+              //checkbox
+              route: {
+                  webstore: false,
+                  store: false,
+                  inappstore: false,
+              },
+              bfCoinUse: 'bfCoinY',
+              bfCoinUsePercentage: '38',
+              bfCoinOpenType: [ //bfCoin
+                {label: '是', value: 'bfCoinY'},
+                {label: '否', value: 'bfCoinN'},
+              ],
+              bfClubLink: {
+                value: '',
+                placeholder: '請輸入beanfun!社團網址',
+                maxlength: 1000,
+              },
+
+              //datepicker&timepicker
+              publishStart: '',
+              publishStartTime: '',
+              publishEnd: '',
+              publishEndTime: '',
+              searchDateStart:'',
+              searchDateEnd:'',
+              searchDateStart02:'',
+              searchDateEnd02:'',
+
+              //upload
+              previewImg:{
+                value: '',
+                name: '',
+                alert: '',
+                validation: true,
+              },
+              productDescImg: [],
+              fileName:'',
+              uploadPinCount: 0,
+
+              //新增 list group
+              itemProperty: [
+                {
+                  attrName:'',
+                  attrKey:'',
+                  attrDefault:'',
+                  validation:''
+                }
+              ],
+
+              //歷程
+              isShow: true,
+              history: [
+                {
+                  activity: '已調退',
+                  time: '2021-10-29 04:03 AM',
+                },
+                {
+                  activity: '凍結資產',
+                  time: '2021-10-30 12:23 AM ',
+                },
+                {
+                  activity: '已派送',
+                  time: '2021-10-29 04:03 AM',
+                },
+                {
+                  activity: '付款成功',
+                  time: '2021-10-25 09:06 AM',
+                },
+                {
+                  activity: '訂單成立',
+                  time: '2021-10-24 09:06 AM',
+                },
+              ],
+              
+
+
+
+
+
+
+
+
+              
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                  
+
+                  formData: {
+                    limitation: { //購買限制
+                        value: 'all',
+                        count: 1
+                    },
+                  },
+                  submitBtnStatus: {
+                      disabled: false,
+                      loading: false,
+                  },
+                  saveBtnStatus: { //儲存草稿 btn
+                      disabled: false,
+                      loading: false,
+                      label: '儲存'
+                  },
+
+
+                  attributeCustom: '',
+                  customUpdate: false,
+              }
+          },
+          watch: {
+            //input group01
+            "attributeG": function (){
+              if(this.attribute.type == 'custom') {
+                  this.attributeCustom = true
+              } else {
+                  this.attributeCustom = false
+              }
+            },
+          },
+          methods: {
+            //input checking
+            checkID: function() {
+              vm.btnLoading.search = true
+              if(vm.ticketID === '1234'){
+                window.setTimeout(function(){
+                  vm.btnLoading.search = false
+                  vm.ticketIDState = 'success'
+                }, 2000);
+              }else{
+                window.setTimeout(function(){
+                  vm.btnLoading.search = false
+                  vm.ticketIDState = 'fail'
+                }, 2000);
+              }
+            }, 
+            //copy
+            copyID: function(id) {
+              let copyText = document.querySelector(id);
+              if (id === '#copyContent') {
+                  vm.itemCodeCopyBtn = true
+              }else {
+                  vm.itemCodeCopyBtn = true
+              }
+              copyText.select();
+              document.execCommand("copy");
+              window.setTimeout(function(){
+                  vm.itemCodeCopyBtn = false
+              }, 2000);
+            },
+
+            //上傳圖片尺寸判斷
+            backpackImgPreview: function(e) {
+              const file = e.target.files[0];
+              this.previewImg.name = file.name;
+              if( file.size / 1024 < 80) {
+                this.previewImg.value = URL.createObjectURL(file);
+                this.previewImg.size = (file.size / 1024).toFixed(2);
+                this.previewImg.alert = ''
+              } else {
+                this.previewImg.value = '';
+                this.previewImg.size = '';
+                this.previewImg.alert = '檔案尺寸過大'
+              }
+            },
+            //移除圖片
+            removeImg: function(idx, type){
+              if (type) {
+                vm.blindFiles.splice(idx,1)
+              } else {
+                vm.productDescImg.splice(idx,1)
+              }
+            },
+            //上傳PIN碼
+            replenishmentFile(e) {
+              const file = e.target.files[0];
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                vm.fileName = file.name;
+                vm.fileinput = reader.result;
+                vm.fileinput = vm.fileinput.split('\r\n')
+                vm.uploadPinCount = vm.fileinput.filter(function(item, index, array){
+                    return item !== "" && item !== "UUID"; 
+                })
+              }
+              reader.readAsText(file);
+            },
+            //新增 list group
+            addField:function(item) {
+              if(item === 'itemProperty') {
+                  let item = {attrName:'',attrKey:'',attrDefault:''}
+                  this.itemProperty.push(item)
+              }
+            },
+            removeField: function(item,idx) {
+              if(item === 'itemProperty') {
+                  this.itemProperty.splice(idx, 1); 
+              }
+            },
+            //歷程
+            toggle: function() {
+              this.isShow = !this.isShow;
+              var box = document.querySelector('.box');
+              if (box.style.height === "auto") {
+                box.style.height = "50px";
+              } else {
+                box.style.height = "auto";
+              }
+            },
+
+            showAlert: function(){
+              if(document.querySelectorAll('.validate-error').length>0) {
+                // 捲動到錯誤的欄位位置 
+                let top = document.querySelectorAll('.validate-error')[0].offsetTop
+                //- console.log(top.scrollY, top.scorllTop, top.offsetTop)
+                window.scrollTo({
+                    top: top,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+                this.submitBtnStatus.loading = false  
+                this.submitBtnStatus.disabled = false  
+              } else {
+                this.submitBtnStatus.disabled = false  
+                $('#previewModal').modal('show')
+              }
+            },
+            saveForm: function (){
+              this.submitBtnStatus.disabled = true  
+              this.submitBtnStatus.loading = true  
+              // this.validationEmpty(this.showAlert)
+              window.setTimeout(function(){
+                  $('#successConfirm').modal('show')
+              }, 500);
+            },
+          },
+          mounted: function () {
+            this.$nextTick(function () {
+                jQfn()
+            })
+          },
+          updated: function () {
+            this.$nextTick(function () {
+                jQfn()
+            })
+          }
+      })
+      //hover tooltip
+      $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+      })
+    </script>
+  </body>
+</html>

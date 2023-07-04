@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="img/favicon.ico" rel="icon" type="image/x-icon">
+  <title>元件</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flatpickr.css" rel="stylesheet">
+  <link href="css/vue-select.css" rel="stylesheet">
+  <link href="css/datatables.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/table.css" rel="stylesheet">
+  <link href="css/element.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css">
+</head>
+
+<body>
+  <div class="d-flex" id="app">
+    <!-- nav -->
+    <div class="element-menu">
+      <h1 class="menu-title text-h4">
+        <a href="#title">後台 UI</a>
+      </h1>
+      <ul>
+        <template v-for="item in menus">
+          <li :class="item.option? 'group': ''" :data-active="currentPage === item.id">
+            <template v-if="item.option">
+              <div class="d-flex" @click="item.submenuExpand = !item.submenuExpand">
+                <a class="element-menu-item">{{item.name}}</a>
+                <div class="arrow" :data-expand="item.submenuExpand">
+                  <img src="./img/icon/icon-arrow-down.svg" alt="">
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="d-flex">
+                <a class="element-menu-item" :href="'#'+item.id" @click="currentPage = item.id">{{item.name}}</a>
+              </div>
+            </template>
+            <ul class="sub-menu" :data-expand="item.submenuExpand" v-if="item.option">
+              <template v-for="subitem in item.option">
+                <li :data-active="currentPage === subitem.id" @click="currentPage = subitem.id">
+                  <a :href="'#'+subitem.id">{{subitem.name}}</a>
+                </li>
+              </template>
+            </ul>
+          </li>
+        </template>
+      </ul>
+      <div class="copyright px-sm">©2022 GASH Co, Ltd. All Right Reserved.</div>
+    </div>
+
+	<div class="element-content animated fadeIn" id="main-content">
+		<h2 id="title" class="text-h1 index-title">後台 UI 元件</h2>
+		<p>後台使用到的UI元件、變數、樣式、設定說明</p>
+		<!-- color -->
+		<section class="box">
+			<h3 id="color" class="text-h3">Color</h3>
+			<div class="d-flex f-wrap">
+				<div class="color-card" v-for="color in colors">
+				<div class="color" :style="'background:'+ color.color"></div><span>{{ color.name }}</span>
+				</div>
+			</div>
+		</section>
+    <!-- template -->
+    <section class="box">
+      <h3 id="template" class="text-h3">Template</h3>
+      <div class="pb-xl">
+        <h5 class="text-h5 pt-sm">【清單】樣式一 <a href="./template-list_01.html" target="_blank">link</a> </h5>
+        <img src="img/demo/template-list_01.png" width="100%" height="auto">
+      </div>
+      <div class="pb-xl">
+        <h5 class="text-h5 pt-sm">【清單】樣式二 <a href="./template-list_02.html" target="_blank">link</a></h5>
+        <img src="img/demo/template-list_02.png" width="100%" height="auto">
+      </div>
+      <div class="pb-xl">
+        <h5 class="text-h5 pt-sm">【清單】樣式三 <a href="./template-list_03.html" target="_blank">link</a></h5>
+        <img src="img/demo/template-list_03.png" width="100%" height="auto">
+      </div>
+      <div class="pb-xl">
+        <h5 class="text-h5 pt-sm">【內頁】樣式一 <a href="./template-page_01.html" target="_blank">link</a></h5>
+        <img src="img/demo/template-page_01.png" width="100%" height="auto">
+      </div>
+      <div class="pb-xl">
+        <h5 class="text-h5 pt-sm">【內頁】樣式二 <a href="./template-page_02.html" target="_blank">link</a></h5>
+        <img src="img/demo/template-page_02.png" width="100%" height="auto">
+      </div>
+    </section>
+		<!-- navigation -->
+		<section class="box">
+			<h3 id="navigation" class="text-h3">Navigation</h3>
+			<div class="pb-xl">
+				<h5 class="text-h5 pt-sm">👉 header</h5>
+				<div class="position-relative pb-xl">
+					<header class="navbar navbar-inverse fixed-top active position-absolute" id="header">
+						<div class="navbar-brand"><a id="menu-toggle"><span class="material-icons">menu</span></a>
+						<h1> <a href="./1.0_index.html"><span>IIO</span>營運後台</a></h1>
+						</div>
+						<ul class="topbar-menu">
+						<li><span class="greeting">Have a Good Time</span></li>
+						<li>
+							<div class="btn-group">
+							<button class="dropdown-toggle topbar-btn" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons">notifications</span><span class="red-dot"></span></button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<ul class="dropdown-list">
+								<li class="dropdown-item"><a class="dropdown-info" href="3.1.1_selling-item.html"><span class="b-caption">[商品審核] [熱門]超可愛小丸子帽子</span></a>
+									<div class="date"><span>今天</span><span>16:55</span></div>
+								</li>
+								<li class="dropdown-item"><a class="dropdown-info" href="2.1.1_asset-detail.html"><span class="b-caption">[資產審核] 小丸子帽子</span></a>
+									<div class="date"><span>今天</span><span>09:55</span></div>
+								</li>
+								<li class="dropdown-item read">
+									<div class="dropdown-info">
+									<p class="b-caption">[資產審核] 小丸子鞋子</p>
+									</div>
+									<div class="date"><span>8-12</span></div>
+								</li>
+								<li class="dropdown-item read">
+									<div class="dropdown-info">
+									<p class="b-caption">[資產審核] 小丸子裙子</p>
+									</div>
+									<div class="date"><span>8-12</span></div>
+								</li>
+								</ul>
+							</div>
+							</div>
+						</li>
+						<li>
+							<div class="btn-group">
+							<button class="dropdown-toggle topbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons">person_outline</span></button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<ul class="dropdown-list">
+								<li class="dropdown-item read"><a class="dropdown-info" href="./login.html"><span class="b-caption">登出</span></a></li>
+								</ul>
+							</div>
+							</div>
+						</li>
+						</ul>
+					</header>
+				</div>
+				<pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;header class="navbar navbar-inverse fixed-top active position-absolute" id="header"&gt;
+  &lt;div class="navbar-brand"&gt;
+    &lt;!-- 開闔左側 menu --&gt;
+    &lt;a id="menu-toggle"&gt;&lt;span class="material-icons"&gt;menu&lt;/span&gt;&lt;/a&gt;
+    &lt;h1&gt;&lt;a href="./1.0_index.html"&gt;&lt;span&gt;IIO&lt;/span&gt;營運後台&lt;/a&gt;&lt;/h1&gt;
+  &lt;/div&gt;
+
+  &lt;ul class="topbar-menu"&gt;
+    &lt;li&gt;&lt;span class="greeting"&gt;Have a Good Time&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="btn-group"&gt;
+        &lt;button class="dropdown-toggle topbar-btn" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
+          &lt;span class="material-icons"&gt;notifications&lt;/span&gt;&lt;span class="red-dot"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="dropdown-menu dropdown-menu-right"&gt;
+          &lt;ul class="dropdown-list"&gt;
+            &lt;li class="dropdown-item"&gt;&lt;a class="dropdown-info"&gt;&lt;span class="b-caption"&gt;[審核通過] 小丸子帽子&lt;/span&gt;&lt;/a&gt;
+              &lt;div class="date"&gt;&lt;span&gt;今天&lt;/span&gt;&lt;span&gt;16:55&lt;/span&gt;&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class="dropdown-item read"&gt;
+              &lt;div class="dropdown-info"&gt;
+                &lt;p class="b-caption"&gt;[審核通過] 小丸子鞋子&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class="date"&gt;&lt;span&gt;8-12&lt;/span&gt;&lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class="dropdown-item read"&gt;
+              &lt;div class="dropdown-info"&gt;
+                &lt;p class="b-caption"&gt;[審核通過] 小丸子裙子&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div class="date"&gt;&lt;span&gt;8-12&lt;/span&gt;&lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;div class="btn-group"&gt;
+        &lt;button class="dropdown-toggle topbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"&gt;
+          &lt;span class="material-icons"&gt;person_outline&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="dropdown-menu dropdown-menu-right"&gt;
+          &lt;ul class="dropdown-list"&gt;
+            &lt;li class="dropdown-item read"&gt;
+              &lt;a class="dropdown-info" href="./login.html"&gt;&lt;span class="b-caption"&gt;登出&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/header&gt;
+        </code></pre>
+        <h5 class="text-h5 pt-sm">👉 side bar</h5>
+        <p>請參考資料夾 js/sidebar.js，編輯 menuItem 內容即可新增/調整側邊欄位內容</p>
+      </div>
+    </section>
+    <!-- modal -->
+    <section class="box">
+      <h3 id="modal" class="text-h3 pt-xl">Modal</h3>
+      <p class="pb-md">使用 bootstrap 4 的 Modal</p>
+      <!-- 麵包屑導覽 -->
+      <h5 id="modalBreadcrumb" class="text-h5 pt-sm">👉 麵包屑導覽</h5>
+      <div class="breadcrum">fun市集後台>資產管理>資產清單</div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="breadcrum"&gt;fun市集後台>資產管理>資產清單&lt;/div&gt;
+      </code></pre>
+      <!-- 單元標題 -->
+      <h5 id="modalTitleWrap" class="text-h5 pt-sm">👉 單元標題</h5>
+      <div class="title-wrap">
+        <div class="info">
+          <h2 class="text-h2">資產清單</h2>
+        </div>
+        <div class="toolbar"><a class="b-btn-primary d-inline-block" data-size="md" href="#"><span class="material-icons">add</span><span>新增資產</span></a></div>
+        <div class="b-caption w-100">查詢資產、並進行資產狀態管理</div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="title-wrap"&gt;
+  &lt;div class="info"&gt;
+    &lt;h2 class="text-h2"&gt;資產清單&lt;/h2&gt;
+  &lt;/div&gt;
+  &lt;div class="toolbar"&gt;
+    &lt;a class="b-btn-primary d-inline-block" data-size="md" href="#"&gt;
+      &lt;span class="material-icons"&gt;add&lt;/span&gt;&lt;span&gt;新增資產&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="b-caption w-100"&gt;查詢資產、並進行資產狀態管理&lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <!-- 搜尋區塊 -->
+      <h5 id="modalSearchGroup" class="text-h5 pt-sm">👉 搜尋區塊</h5>
+      <div class="b-search-group">
+        <div class="b-text-field">
+          <label>input / 一般</label>
+          <div class="b-field-group"> 
+            <div class="b-field-row">
+              <input class="b-input" type="text" placeholder="請輸入OOO">
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label>input / 加長</label>
+          <div class="b-field-group"> 
+            <div class="b-field-row">
+              <input class="b-input id" type="text" placeholder="請輸入OOO">
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label>select</label>
+          <div class="b-field-group">
+            <div class="b-field-row">
+              <div class="b-input-wrap">
+                <v-select class="b-select" :options="select.option" v-model="select.value" autocomplete="off" :clearable="false"></v-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label class="mb-xxs">radio</label>
+          <div class="b-field-group"> 
+            <div class="b-field-row">
+              <div class="b-radio">
+                <input type="radio" id="單選01" name="單選" value="單選01" checked>
+                <label for="單選01">單選01</label>
+              </div>
+              <div class="b-radio">
+                <input type="radio" id="單選02" name="單選" value="單選02">
+                <label for="單選02">單選02</label>
+              </div>
+              <div class="b-radio">
+                <input type="radio" id="單選03" name="單選" value="單選03">
+                <label for="單選03">單選03</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label class="mb-xx">checkbox</label>
+          <div class="groups">
+            <div class="b-checkbox">
+              <input type="checkbox" id="0" checked>
+              <label for="0">checkbox01</label>
+            </div>
+            <div class="b-checkbox">
+              <input type="checkbox" id="1">
+              <label for="1">checkbox02</label>
+            </div>
+            <div class="b-checkbox">
+              <input type="checkbox" id="2">
+              <label for="2">checkbox03</label>
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label>國碼<span>*</span></label>
+          <div class="b-field-group">
+            <div class="b-field-row">
+              <div class="b-input-wrap">
+                <v-select class="b-select country-codes" :options="countryCodes.option" v-model="countryCodes.value" :clearable="false" required></v-select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="b-text-field">
+          <label>時間區間</label>
+          <div class="b-field-group">
+            <div class="b-field-row">
+              <input class="b-input mr-none" id="dateRangeStart" type="text" placeholder="開始時間" v-model="searchDateStart"><span class="p-xs">~</span>
+              <input class="b-input" id="dateRangeEnd" type="text" placeholder="結束時間" v-model="searchDateEnd">
+            </div>
+          </div>
+        </div>
+        <div class="b-search-buttons">
+          <button class="b-btn-default ladda-button" data-size="md" data-style="slide-left" type="button"><span class="ladda-label"><i class="fa fa-search"></i>查詢</span><span class="ladda-spinner"></span>
+            <div class="ladda-progress" style="width:0"></div>
+          </button>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-search-group"&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label&gt;input / 一般&lt;/label&gt;
+    &lt;div class="b-field-group"&gt; 
+      &lt;div class="b-field-row"&gt;
+        &lt;input class="b-input id" type="text" placeholder="請輸入OOO"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label&gt;input / 加長&lt;/label&gt;
+    &lt;div class="b-field-group"&gt; 
+      &lt;div class="b-field-row"&gt;
+        &lt;input class="b-input" type="text" placeholder="請輸入OOO"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label&gt;select&lt;/label&gt;
+    &lt;div class="b-field-group"&gt;
+      &lt;div class="b-field-row"&gt;
+        &lt;div class="b-input-wrap"&gt;
+          &lt;!-- 使用 vue 資料綁定 --&gt;
+          &lt;v-select class="b-select" :options="select.option" v-model="select.value" autocomplete="off" :clearable="false"&gt;&lt;/v-select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label class="mb-xxs"&gt;radio&lt;/label&gt;
+    &lt;div class="b-field-group"&gt; 
+      &lt;div class="b-field-row"&gt;
+        &lt;div class="b-radio"&gt;
+          &lt;input type="radio" id="單選01" name="單選" value="單選01" checked&gt;
+          &lt;label for="單選01"&gt;單選01&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="b-radio"&gt;
+          &lt;input type="radio" id="單選02" name="單選" value="單選02"&gt;
+          &lt;label for="單選02"&gt;單選02&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class="b-radio"&gt;
+          &lt;input type="radio" id="單選03" name="單選" value="單選03"&gt;
+          &lt;label for="單選03"&gt;單選03&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label class="mb-xx"&gt;checkbox&lt;/label&gt;
+    &lt;div class="groups"&gt;
+      &lt;div class="b-checkbox"&gt;
+        &lt;input type="checkbox" id="0" checked&gt;
+        &lt;label for="0"&gt;checkbox01&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="b-checkbox"&gt;
+        &lt;input type="checkbox" id="1"&gt;
+        &lt;label for="1"&gt;checkbox02&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class="b-checkbox"&gt;
+        &lt;input type="checkbox" id="2"&gt;
+        &lt;label for="2"&gt;checkbox03&lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label&gt;國碼&lt;span&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;div class="b-field-group"&gt;
+      &lt;div class="b-field-row"&gt;
+        &lt;div class="b-input-wrap"&gt;
+          &lt;!-- 使用 vue 資料綁定 --&gt;
+          &lt;v-select class="b-select country-codes" :options="countryCodes.option" v-model="countryCodes.value" :clearable="false" required&gt;&lt;/v-select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-text-field"&gt;
+    &lt;label&gt;時間區間&lt;/label&gt;
+    &lt;div class="b-field-group"&gt;
+      &lt;div class="b-field-row"&gt;
+        &lt;!-- 使用 vue 資料綁定 --&gt;
+        &lt;input class="b-input mr-none" id="dateRangeStart" type="text" placeholder="開始時間" v-model="searchDateStart"&gt;&lt;span class="p-xs"&gt;~&lt;/span&gt;
+        &lt;input class="b-input" id="dateRangeEnd" type="text" placeholder="結束時間" v-model="searchDateEnd"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="b-search-buttons"&gt;
+    &lt;button class="b-btn-default ladda-button" data-size="md" data-style="slide-left" type="button"&gt;&lt;span class="ladda-label"&gt;&lt;i class="fa fa-search"&gt;&lt;/i&gt;查詢&lt;/span&gt;&lt;span class="ladda-spinner"&gt;&lt;/span&gt;
+      &lt;div class="ladda-progress" style="width:0"&gt;&lt;/div&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //select 資料綁定
+      select: {
+        value: {label: 'select01', value: 1},
+        option: [
+          {label: 'select01', value: 1},
+          {label: 'select02', value: 2},
+          {label: 'select03', value: 3},
+        ],
+        validation: true
+      },
+      //國碼 資料綁定
+      countryCodes: {
+        value:{value: '+886', label: '台灣 +886' },
+        option: [
+          {value: '+886', label: '台灣 +886',},
+          {value: '+86', label: '中國 +86'},
+          {value: '+853', label: '澳門 +853'},
+          {value: '+852', label: '香港 +852'},
+          {value: '+850', label: '北韓 +850'},
+          {value: '+84', label: '越南 +84'},
+          {value: '+82', label: '南韓 +82'},
+          {value: '+81', label: '日本 +81'},
+          {value: '+66', label: '泰國 +66'},
+          {value: '+65', label: '新加坡 +65'},
+          {value: '+63', label: '菲律賓 +63'},
+          {value: '+62', label: '印尼 +62'},
+          {value: '+61', label: '澳洲 +61'},
+          {value: '+60', label: '馬來西亞 +60'},
+          {value: '+49', label: '德國 +49'},
+          {value: '+44', label: '英國 +44'},
+          {value: '+39', label: '義大利 +39'},
+          {value: '+33', label: '法國 +33'},
+          {value: '+32', label: '比利時 +32'},
+          {value: '+31', label: '荷蘭 +31'},
+          {value: '+1', label: '加拿大 +1'},
+          {value: '+1', label: '美國 +1'},
+        ]
+      },
+      //時間區間
+      searchDateStart:'',
+      searchDateEnd:'',
+    }
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      jQfn();
+    })
+  },
+})
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+//時間區間設定
+&lt;script src="js/flatpickr.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  var jQfn = function (){
+    flatpickr('#dateRangeStart',{
+      static: true,
+      enableTime: true,
+      enableSeconds: true,
+      dateFormat: "Y/m/d H:i:s",
+      minDate: new Date(),
+    })
+    flatpickr('#dateRangeEnd',{
+      static: true,
+      enableSeconds: true,
+      enableTime: true,
+      dateFormat: "Y/m/d H:i:s",
+      minDate: vm.searchDateStart,
+    })
+  }
+&lt;/script&gt;
+      </code></pre>
+      <!-- table 列表 -->
+      <h5 id="modalListTable" class="text-h5 pt-sm">👉 table 列表</h5>
+      <div class="b-table-wrap">
+        <div class="p-md d-flex justify-content-end" style="margin-bottom: -4.5rem;">
+          <button class="b-btn-primary outline position-relative" data-size="md" style="z-index:1">button</button>
+          <label class="b-btn-primary outline position-relative" for="import" data-size="md" style="z-index:1">上傳 button
+            <input type="file" id="import" accept=".csv" multiple="multiple">
+          </label>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover" id="tableList">
+            <thead>
+              <th>狀態</th>
+              <th>tag</th>
+              <th>商品資訊</th>
+              <th>價格</th>
+              <th>庫存</th>
+              <th>刊登期間</th>
+              <th>供應商</th>
+              <th>更新時間</th>
+              <th>操作功能</th>
+            </thead>
+            <tbody>
+              <template v-for="item,idx in tableData">
+                <tr>
+                  <td><span class="b-caption">{{item.status}}</span></td>
+                  <td><span class="b-caption"><span class="badge-info">{{item.tag}}</span></td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img class="b-t-img" src="https://fakeimg.pl/60x40/dddddd/?text=img">
+                      <div class="b-t-info">
+                        <h3 class="b-t-info-title width-200 b-to-e">{{item.name}}</h3>
+                        <div class="d-flex align-items-center">
+                          <input class="b-input-copy b-caption width-150 b-to-e" :class="'list'+idx" readonly v-model="item.itemCode">
+                          <button class="b-btn-default outline m-none" data-size="xs" type="button" @click="copyAlert(idx)"> 
+                            <template v-if="item.copied"><span>已複製</span></template>
+                            <template v-else><span>複製ID</span></template>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="t-r"> <span class="b-caption-l">{{item.price}}</span></td>
+                  <td class="t-r"> <span class="b-caption-l">{{item.stock}}</span></td>
+                  <td>
+                    <p class="b-caption-l">{{item.publishStart}}</p>
+                    <p class="b-caption-l">{{item.publishEnd}}</p>
+                  </td>
+                  <td> <span class="b-caption-l">{{item.cp}}</span></td>
+                  <td> <span class="b-caption-l">{{item.update_time}}</span></td>
+                  <td>
+                    <button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='#'">查看</button>
+                    <button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='#'">編輯</button>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-table-wrap"&gt;
+  &lt;div class="p-md d-flex justify-content-end" style="margin-bottom: -4.5rem;"&gt;
+    &lt;button class="b-btn-primary outline position-relative" data-size="md" style="z-index:1"&gt;button&lt;/button&gt;
+    &lt;label class="b-btn-primary outline position-relative" for="import" data-size="md" style="z-index:1"&gt;上傳 button
+      &lt;input type="file" id="import" accept=".csv" multiple="multiple"&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="table-responsive"&gt;
+    &lt;table class="table table-hover" id="tableList"&gt;
+      &lt;thead&gt;
+        &lt;th&gt;狀態&lt;/th&gt;
+        &lt;th&gt;tag&lt;/th&gt;
+        &lt;th&gt;商品資訊&lt;/th&gt;
+        &lt;th&gt;價格&lt;/th&gt;
+        &lt;th&gt;庫存&lt;/th&gt;
+        &lt;th&gt;刊登期間&lt;/th&gt;
+        &lt;th&gt;供應商&lt;/th&gt;
+        &lt;th&gt;更新時間&lt;/th&gt;
+        &lt;th&gt;操作功能&lt;/th&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;!-- 使用 vue 資料綁定 --&gt;
+        &lt;template v-for="item,idx in tableData"&gt;
+          &lt;tr&gt;
+            &lt;td&gt; &lt;span class="b-caption"&gt;{ {item.status}}&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;
+              &lt;div class="d-flex align-items-center"&gt;&lt;img class="b-t-img"
+                  src="https://fakeimg.pl/60x40/dddddd/?text=img"&gt;
+                &lt;div class="b-t-info"&gt;
+                  &lt;h3 class="b-t-info-title width-200 b-to-e"&gt;{ {item.name}}&lt;/h3&gt;
+                  &lt;div class="d-flex align-items-center"&gt;
+                    &lt;input class="b-input-copy b-caption width-150 b-to-e" :class="'list'+idx" readonly v-model="item.itemCode"&gt;
+                    &lt;button class="b-btn-default outline m-none" data-size="xs" type="button" @click="copyAlert(idx)"&gt; 
+                      &lt;template v-if="item.copied"&gt;&lt;span&gt;已複製&lt;/span&gt;&lt;/template&gt;
+                      &lt;template v-else&gt;&lt;span&gt;複製ID&lt;/span&gt;&lt;/template&gt;
+                    &lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/td&gt;
+            &lt;td class="t-r"&gt; &lt;span class="b-caption-l"&gt;{ {item.price}}&lt;/span&gt;&lt;/td&gt;
+            &lt;td class="t-r"&gt; &lt;span class="b-caption-l"&gt;{ {item.stock}}&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;
+              &lt;p class="b-caption-l"&gt;{ {item.publishStart}}&lt;/p&gt;
+              &lt;p class="b-caption-l"&gt;{ {item.publishEnd}}&lt;/p&gt;
+            &lt;/td&gt;
+            &lt;td&gt; &lt;span class="b-caption-l"&gt;{ {item.cp}}&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt; &lt;span class="b-caption-l"&gt;{ {item.update_time}}&lt;/span&gt;&lt;/td&gt;
+            &lt;td&gt;
+              &lt;button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='#'"&gt;查看&lt;/button&gt;
+              &lt;button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='#'"&gt;編輯&lt;/button&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/template&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //list 資料綁定
+      tableData: [
+        {
+          status: '刊登中',
+          tag: '暢銷品',
+          name: '[熱門] 經典特色小丸子帽子',
+          itemCode: 'c2a98d80-9963-4640-862e-442ad15f2b3c',
+          copied: '',
+          price: '1,500',
+          stock: 10,
+          publishStart: '2021/12/23 23:59',
+          publishEnd: '2021/12/25 23:59',
+          cp: 'OX供應商',
+          update_time: '2021/8/9 19:00',
+        },
+      ],
+    }
+  },
+  methods: {
+    //複製ID
+    copyAlert(idx) {
+      let input = document.querySelector('.list' + idx);
+      vm.tableData[idx].copied = true
+      input.select();
+      document.execCommand("copy");
+      window.setTimeout(function(){
+          vm.tableData[idx].copied = false
+      }, 1000);                  
+    },
+  },
+})
+      </code></pre>
+      <pre  class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+$(document).ready(function () {
+  //DataTables 套件設定
+  $('#tableList').DataTable({
+    "pagingType": "full_numbers",
+    "language": {  // 中文介面的字詞設定
+      "decimal": "",
+      "emptyTable": "沒有可顯示的資料",
+      "info": "顯示從 _START_ 到 _END_ 共 _TOTAL_ 筆資料",
+      "infoEmpty": "顯示從 0 到 0 共 0 筆資料",
+      "infoFiltered": "(從 _MAX_ 筆篩選出)",
+      "infoPostFix": "",
+      "thousands": ",",
+      "lengthMenu": "顯示 _MENU_ 筆資料",
+      "loadingRecords": "載入中...",
+      "processing": "執行中...",
+      "search": "篩選資料: ",
+      "zeroRecords": "查無符合資料",
+      "paginate": {
+        "first": "第一筆",
+        "last": "最後一筆",
+        "next": "下一筆",
+        "previous": "上一筆"
+      },
+      "aria": {
+        "sortAscending": ": activate to sort column ascending",
+        "sortDescending": ": activate to sort column descending"
+      }
+    },
+    "order": [[0, "asc"]], // 預設表格排序
+    scrollY: '25rem', // 產生卷軸的高度
+    scrollX: true,
+    searching: false, // 關閉搜尋
+    scrollCollapse: true, 
+    fixedColumns: { // 固定的欄位
+      left: 0, // 預設會是 1，設定 0 來取消左方欄位固定
+      right: 1
+    }
+  });
+});
+
+      </code></pre>
+      <p class="caption">更多關於 DataTables 的說明 <a class="link-primary" href="https://datatables.net/"
+          target="_blank">請見此處</a>。</p>
+      <!-- table 摺疊 -->
+      <h5 id="modalRoleTable" class="text-h5 pt-sm">👉 table 摺疊</h5>
+      <div class="b-table-wrap">
+        <div class="b-table-title"></div>
+        <div class="table-responsive">
+          <table class="table" id="roleTable" style="width: 100%;">
+            <thead> 
+              <tr>
+                <th width="5%"></th>
+                <th width="35%">供應商</th>
+                <th width="10%"></th>
+                <th width="10%"></th>
+                <th width="10%"></th>
+                <th width="10%"></th>
+                <th width="10%"></th>
+                <th width="10%">操作功能</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template> 
+                <template v-for="item,idx in roleTableData">
+                  <tr>
+                    <td width="5%"></td>
+                    <td width="35%" class="cpListTitle"><span>{{item.cpName}}</span></td>
+                    <td width="10%">
+                      <template v-show="false">
+                        <template v-for="subItem,idx in item.subItem" >
+                          <span v-if="idx === 0" v-show="false">{{subItem.assets}}</span>
+                          <span v-else v-show="false">{{subItem.assets}}</span>
+                        </template>
+                      </template>
+                    </td>
+                    <td width="10%"></td>
+                    <td width="10%"></td>
+                    <td width="10%"></td>
+                    <td width="10%"></td>
+                    <td width="10%"><button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='./11.1.2_cp-list-edit.html'">編輯</button></td>
+                  </tr>
+                </template>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-table-wrap"&gt;
+  &lt;div class="b-table-title"&gt;&lt;/div&gt;
+  &lt;div class="table-responsive"&gt;
+    &lt;table class="table" id="roleTable" style="width: 100%;"&gt;
+      &lt;thead&gt; 
+        &lt;tr&gt;
+          &lt;th width="5%"&gt;&lt;/th&gt;
+          &lt;th width="35%"&gt;供應商&lt;/th&gt;
+          &lt;th width="10%"&gt;&lt;/th&gt;
+          &lt;th width="10%"&gt;&lt;/th&gt;
+          &lt;th width="10%"&gt;&lt;/th&gt;
+          &lt;th width="10%"&gt;&lt;/th&gt;
+          &lt;th width="10%"&gt;&lt;/th&gt;
+          &lt;th width="10%"&gt;操作功能&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;template&gt;
+          &lt;!-- 使用 vue 資料綁定 --&gt;
+          &lt;template v-for="item,idx in roleTableData"&gt;
+            &lt;tr&gt;
+              &lt;td width="5%"&gt;&lt;/td&gt;
+              &lt;td width="35%" class="cpListTitle"&gt;&lt;span&gt;{ {item.cpName}}&lt;/span&gt;&lt;/td&gt;
+              &lt;td width="10%"&gt;
+                &lt;template v-show="false"&gt;
+                  &lt;template v-for="subItem,idx in item.subItem" &gt;
+                    &lt;span v-if="idx === 0" v-show="false"&gt;{ {subItem.assets}}&lt;/span&gt;
+                    &lt;span v-else v-show="false"&gt;{ {subItem.assets}}&lt;/span&gt;
+                  &lt;/template&gt;
+                &lt;/template&gt;
+              &lt;/td&gt;
+              &lt;td width="10%"&gt;&lt;/td&gt;
+              &lt;td width="10%"&gt;&lt;/td&gt;
+              &lt;td width="10%"&gt;&lt;/td&gt;
+              &lt;td width="10%"&gt;&lt;/td&gt;
+              &lt;td width="10%"&gt;&lt;button class="b-btn-default text m-none px-xs" data-size="sm" onclick="window.location.href='./11.1.2_cp-list-edit.html'"&gt;編輯&lt;/button&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/template&gt;
+        &lt;/template&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //list 資料綁定
+      roleTableData: [
+        {
+          "id": "1",
+          "cpName": "樂點股份有限公司(我不是胖虎2022)",
+          "subItem":[
+            {
+              "assets":"道具1",
+              "path":"B2C",
+              "platformFee":"0%",
+              "paFee":"0%",
+              "shareFee":"5%",
+              "expenseFee":"50%",
+            },
+            {
+              "assets":"道具2",
+              "path":"C2C",
+              "platformFee":"10%",
+              "paFee":"5%",
+              "shareFee":"5%",
+              "expenseFee":"50%",
+            },
+          ],
+        },
+      ],
+    }
+  },
+})
+      </code></pre>
+      <pre  class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+$(document).ready(function () {
+//子表格 DOM 生成
+  function format ( d ) {
+    let data = d.subItem.split('&lt;span style=\"display: none;\"&gt;');
+    let childTable = '';
+    for (let i=0 ; i&lt;data.length; i++) {
+      let template = ''
+      if (data.length === (i+1)) {
+        template = `
+        &lt;tr&gt;
+          &lt;td width="5%" class='dgc-blank dgc-child dgc-last'&gt;&lt;/td&gt;
+          &lt;td width="19%"&gt;${data[i]}&lt;/td&gt;
+          &lt;td width="10%"&gt;B2C&lt;/td&gt;
+          &lt;td width="10%"&gt;0%&lt;/td&gt;
+          &lt;td width="10%"&gt;5%&lt;/td&gt;
+          &lt;td width="18%"&gt;5%&lt;/td&gt;
+          &lt;td width="18%"&gt;5%&lt;/td&gt;
+          &lt;td width="10%"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        `
+      }
+      else if (i === 0) {
+        template = `
+        &lt;tr class='dgc-first'&gt;
+          &lt;td width="5%" class='dgc-blank dgc-child dgc-first'&gt;&lt;/td&gt;
+          &lt;td width="19%"&gt;資產類別&lt;/td&gt;
+          &lt;td width="10%"&gt;交易途徑&lt;/td&gt;
+          &lt;td width="10%"&gt;平台手續費&lt;/td&gt;
+          &lt;td width="10%"&gt;PA手續費&lt;/td&gt;
+          &lt;td width="18%"&gt;廠商平台手續費分潤&lt;/td&gt;
+          &lt;td width="18%"&gt;廠商PA手續費負擔&lt;/td&gt;
+          &lt;td width="10%"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        `
+      }
+      else {
+        template = `
+        &lt;tr&gt;
+          &lt;td width="5%" class='dgc-blank dgc-child'&gt;&lt;/td&gt;
+          &lt;td width="19%"&gt;${data[i]}&lt;/td&gt;
+          &lt;td width="10%"&gt;C2C&lt;/td&gt;
+          &lt;td width="10%"&gt;0%&lt;/td&gt;
+          &lt;td width="10%"&gt;0%&lt;/td&gt;
+          &lt;td width="18%"&gt;0%&lt;/td&gt;
+          &lt;td width="18%"&gt;0%&lt;/td&gt;
+          &lt;td width="10%"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        `
+      }
+      childTable += template
+    }
+    return '&lt;table cellspacing="0" border="0" style="width: 100%"&gt;'+ childTable + '&lt;/table&gt;';
+  };
+  //DataTables 套件設定
+  var table = $('#roleTable').DataTable({
+    "columnDefs": [{ targets: 'no-sort', orderable: false }],
+    "pagingType": "full_numbers",
+    "language": {
+      "decimal":        "",
+      "emptyTable":     "沒有可顯示的資料",
+      "info":           "顯示從 _START_ 到 _END_ 共 _TOTAL_ 筆資料",
+      "infoEmpty":      "顯示從 0 到 0 共 0 筆資料",
+      "infoFiltered":   "(從 _MAX_ 筆篩選出)",
+      "infoPostFix":    "",
+      "thousands":      ",",
+      "lengthMenu":     "顯示 _MENU_ 筆資料",
+      "loadingRecords": "載入中...",
+      "processing":     "執行中...",
+      "search":         "篩選資料: ",
+      "zeroRecords":    "查無符合資料",
+      "paginate": {
+        "first":      "第一筆",
+        "last":       "最後一筆",
+        "next":       "下一筆",
+        "previous":   "上一筆"
+      },
+      "aria": {
+        "sortAscending":  ": activate to sort column ascending",
+        "sortDescending": ": activate to sort column descending"
+      }
+    },
+    "order": [[ 0, "desc" ]],
+    scrollY:        '25rem',
+    scrollX:        true, 
+    searching:      false,
+    scrollCollapse: true,
+    fixedColumns:   {
+      left: 0,
+      // right: 1,
+    },
+    "columns": [
+      {
+        "className":      'dgc-control',
+        "orderable":      false,
+        "data":           null,
+        "defaultContent": ''
+      },
+      { "data": "office" },
+      { "data": "subItem" },
+      { "data": "path" },
+      { "data": "platformFee" },
+      { "data": "paFee" },
+      { "data": "shareFee" },
+      { "data": "func" }
+    ],
+    "ordering": false,
+      scrollY:        '25rem',
+      scrollX:        true,
+      searching:      false,
+      scrollCollapse: true,
+      paging:         true,
+  });
+  //roleTable 點擊展開子選單
+  $('#roleTable tbody').on('click', 'td.dgc-control', function () {
+    var tr = $(this).closest('tr');
+    var row = table.row( tr );
+
+    if ( row.child.isShown() ) {
+        // This row is already open - close it
+        row.child.hide();
+        tr.removeClass('shown');
+    }
+    else {
+        // Open this row
+        row.child( format(row.data()) ).show();
+        tr.addClass('shown');
+    }
+  });
+});
+      </code></pre>
+      <!-- selector 類別  -->
+      <h5 id="modalCategorySelector" class="text-h5 pt-sm">👉 selector 類別</h5>
+      <div class="data-type-list bg-gray-1 p-md">
+        <div class="category-list">
+          <ul class="scroll-item">
+            <div class="category-head">
+              <p class="text-h5 pb-md">大分類</p>
+              <div class="category-btn">
+                <button class="b-btn-default text m-none px-xs" @click="">新增</button>
+                <button class="b-btn-default text m-none px-xs" @click="" :disabled="!mainList">刪除</button>
+              </div>
+            </div>
+            <form>
+              <li class="category-item">
+                <input type="radio" id="mainList01" v-model="mainList" value="美食與生活" name="美食與生活">
+                <label for="mainList01">
+                  <p>美食與生活</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="mainList02" v-model="mainList" value="旅遊" name="旅遊">
+                <label for="mainList02">
+                  <p>旅遊</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="mainList03" v-model="mainList" value="偶像娛樂" name="偶像娛樂">
+                <label for="mainList03">
+                  <p>偶像娛樂</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+          </ul>
+          <ul class="scroll-item">
+            <div class="category-head">
+              <p class="text-h5 pb-md">中分類</p>
+              <div class="category-btn">
+                <button class="b-btn-default text m-none px-xs" @click="" :disabled="!mainList">新增</button>
+                <button class="b-btn-default text m-none px-xs" @click="" :disabled="!mediumList">刪除</button>
+              </div>
+            </div>
+            <form v-if="mainList === '美食與生活'">
+              <li class="category-item">
+                <input type="radio" id="mediumList01" v-model="mediumList" value="兌換券" name="兌換券">
+                <label for="mediumList01">
+                  <p>兌換券</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="mediumList02" v-model="mediumList" value="購物金" name="購物金">
+                <label for="mediumList02">
+                  <p>購物金</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '旅遊'">
+              <li class="category-item">
+                <input type="radio" id="mediumList01" v-model="mediumList" value="網美景點" name="網美景點">
+                <label for="mediumList01">
+                  <p>網美景點</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="mediumList02" v-model="mediumList" value="賞櫻步道" name="賞櫻步道">
+                <label for="mediumList02">
+                  <p>賞櫻步道</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '偶像娛樂'">
+              <li class="category-item">
+                <input type="radio" id="mediumList01" v-model="mediumList" value="原子少年" name="原子少年">
+                <label for="mediumList01">
+                  <p>原子少年</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="mediumList02" v-model="mediumList" value="未來少女" name="未來少女">
+                <label for="mediumList02">
+                  <p>未來少女</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+          </ul>
+          <ul class="scroll-item">
+            <div class="category-head">
+              <p class="text-h5 pb-md">小分類</p>
+              <div class="category-btn">
+                <button class="b-btn-default text m-none px-xs" @click="" :disabled="!mediumList">新增</button>
+                <button class="b-btn-default text m-none px-xs" @click="" :disabled="!smallList">刪除</button>
+              </div>
+            </div>
+            <form v-if="mainList === '美食與生活' && mediumList === '兌換券'">                      
+              <li class="category-item">
+                <input type="radio" id="smallList01" v-model="smallList" value="便利商店" name="便利商店">
+                <label for="smallList01">
+                  <p>便利商店</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="smallList02" v-model="smallList" value="3C" name="3C">
+                <label for="smallList02">
+                  <p>3C</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="smallList03" v-model="smallList" value="大賣場" name="大賣場">
+                <label for="smallList03">
+                  <p>大賣場</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '美食與生活' && mediumList === '購物金'">                      
+              <li class="category-item">
+                <input type="radio" id="smallList01" v-model="smallList" value="便利商店" name="便利商店">
+                <label for="smallList01">
+                  <p>便利商店</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="smallList02" v-model="smallList" value="有閒購物" name="有閒購物">
+                <label for="smallList02">
+                  <p>有閒購物</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '旅遊' && mediumList === '網美景點'">                      
+              <li class="category-item">
+                <input type="radio" id="smallList01" v-model="smallList" value="經國七海文化園區" name="經國七海文化園區">
+                <label for="smallList01">
+                  <p>經國七海文化園區</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="smallList02" v-model="smallList" value="不只是圖書館" name="不只是圖書館">
+                <label for="smallList02">
+                  <p>不只是圖書館</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '旅遊' && mediumList === '賞櫻步道'">                      
+              <li class="category-item">
+                <input type="radio" id="smallList01" v-model="smallList" value="太極嶺步道" name="太極嶺步道">
+                <label for="smallList01">
+                  <p>太極嶺步道</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+              <li class="category-item">
+                <input type="radio" id="smallList02" v-model="smallList" value="風尾步道" name="風尾步道">
+                <label for="smallList02">
+                  <p>風尾步道</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+            <form v-if="mainList === '偶像娛樂' && mediumList === '原子少年'">                      
+              <li class="category-item">
+                <input type="radio" id="smallList01" v-model="smallList" value="金星" name="金星">
+                <label for="smallList01">
+                  <p>金星</p>
+                  <span class="material-icons">chevron_right</span>
+                </label>
+              </li>
+            </form>
+          </ul>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="data-type-list bg-gray-1 p-md"&gt;
+  &lt;div class="category-list"&gt;
+    &lt;ul class="scroll-item"&gt;
+      &lt;div class="category-head"&gt;
+        &lt;p class="text-h5 pb-md"&gt;大分類&lt;/p&gt;
+        &lt;div class="category-btn"&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click=""&gt;新增&lt;/button&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click="" :disabled="!mainList"&gt;刪除&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mainList01" v-model="mainList" value="美食與生活" name="美食與生活"&gt;
+          &lt;label for="mainList01"&gt;
+            &lt;p&gt;美食與生活&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mainList02" v-model="mainList" value="旅遊" name="旅遊"&gt;
+          &lt;label for="mainList02"&gt;
+            &lt;p&gt;旅遊&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mainList03" v-model="mainList" value="偶像娛樂" name="偶像娛樂"&gt;
+          &lt;label for="mainList03"&gt;
+            &lt;p&gt;偶像娛樂&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+    &lt;/ul&gt;
+    &lt;ul class="scroll-item"&gt;
+      &lt;div class="category-head"&gt;
+        &lt;p class="text-h5 pb-md"&gt;中分類&lt;/p&gt;
+        &lt;div class="category-btn"&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click="" :disabled="!mainList"&gt;新增&lt;/button&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click="" :disabled="!mediumList"&gt;刪除&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form v-if="mainList === '美食與生活'"&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList01" v-model="mediumList" value="兌換券" name="兌換券"&gt;
+          &lt;label for="mediumList01"&gt;
+            &lt;p&gt;兌換券&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList02" v-model="mediumList" value="購物金" name="購物金"&gt;
+          &lt;label for="mediumList02"&gt;
+            &lt;p&gt;購物金&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '旅遊'"&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList01" v-model="mediumList" value="網美景點" name="網美景點"&gt;
+          &lt;label for="mediumList01"&gt;
+            &lt;p&gt;網美景點&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList02" v-model="mediumList" value="賞櫻步道" name="賞櫻步道"&gt;
+          &lt;label for="mediumList02"&gt;
+            &lt;p&gt;賞櫻步道&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '偶像娛樂'"&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList01" v-model="mediumList" value="原子少年" name="原子少年"&gt;
+          &lt;label for="mediumList01"&gt;
+            &lt;p&gt;原子少年&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="mediumList02" v-model="mediumList" value="未來少女" name="未來少女"&gt;
+          &lt;label for="mediumList02"&gt;
+            &lt;p&gt;未來少女&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+    &lt;/ul&gt;
+    &lt;ul class="scroll-item"&gt;
+      &lt;div class="category-head"&gt;
+        &lt;p class="text-h5 pb-md"&gt;小分類&lt;/p&gt;
+        &lt;div class="category-btn"&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click="" :disabled="!mediumList"&gt;新增&lt;/button&gt;
+          &lt;button class="b-btn-default text m-none px-xs" @click="" :disabled="!smallList"&gt;刪除&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;form v-if="mainList === '美食與生活' && mediumList === '兌換券'"&gt;                      
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList01" v-model="smallList" value="便利商店" name="便利商店"&gt;
+          &lt;label for="smallList01"&gt;
+            &lt;p&gt;便利商店&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList02" v-model="smallList" value="3C" name="3C"&gt;
+          &lt;label for="smallList02"&gt;
+            &lt;p&gt;3C&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList03" v-model="smallList" value="大賣場" name="大賣場"&gt;
+          &lt;label for="smallList03"&gt;
+            &lt;p&gt;大賣場&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '美食與生活' && mediumList === '購物金'"&gt;                      
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList01" v-model="smallList" value="便利商店" name="便利商店"&gt;
+          &lt;label for="smallList01"&gt;
+            &lt;p&gt;便利商店&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList02" v-model="smallList" value="有閒購物" name="有閒購物"&gt;
+          &lt;label for="smallList02"&gt;
+            &lt;p&gt;有閒購物&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '旅遊' && mediumList === '網美景點'"&gt;                      
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList01" v-model="smallList" value="經國七海文化園區" name="經國七海文化園區"&gt;
+          &lt;label for="smallList01"&gt;
+            &lt;p&gt;經國七海文化園區&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList02" v-model="smallList" value="不只是圖書館" name="不只是圖書館"&gt;
+          &lt;label for="smallList02"&gt;
+            &lt;p&gt;不只是圖書館&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '旅遊' && mediumList === '賞櫻步道'"&gt;                      
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList01" v-model="smallList" value="太極嶺步道" name="太極嶺步道"&gt;
+          &lt;label for="smallList01"&gt;
+            &lt;p&gt;太極嶺步道&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList02" v-model="smallList" value="風尾步道" name="風尾步道"&gt;
+          &lt;label for="smallList02"&gt;
+            &lt;p&gt;風尾步道&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+      &lt;form v-if="mainList === '偶像娛樂' && mediumList === '原子少年'"&gt;                      
+        &lt;li class="category-item"&gt;
+          &lt;input type="radio" id="smallList01" v-model="smallList" value="金星" name="金星"&gt;
+          &lt;label for="smallList01"&gt;
+            &lt;p&gt;金星&lt;/p&gt;
+            &lt;span class="material-icons"&gt;chevron_right&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/li&gt;
+      &lt;/form&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //list 資料綁定
+      mainList: '',
+      mediumList: '',
+      smallList: '',
+    }
+  },
+})
+      </code></pre>
+      <!-- popup 一般 -->
+      <h5 id="modalDefaultPopup" class="text-h5 pt-sm">👉 popup 一般</h5>
+      <button class="b-btn-default mb-md" data-size="md" data-toggle="modal" data-target="#previewModal">開啟跳窗</button>
+      <div class="modal fade" id="previewModal" data-bs-keyboard="false" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content bg">
+            <div class="modal-body">
+              <h3 class="modal-title">標題</h3>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A dolore est temporibus vel laboriosam
+                molestias nostrum impedit velit quasi, error molestiae, eveniet ipsa non asperiores necessitatibus
+                eum. Pariatur, quia enim.</p>
+            </div>
+            <div class="modal-footer justify-content-center pt-none">
+              <button class="b-btn-primary w-100 mb-sm" data-size="lg" type="button" data-dismiss="modal">送出</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;button class="b-btn-default" data-size="md" data-toggle="modal" data-target="#previewModal"&gt;開啟跳窗&lt;/button&gt;
+
+&lt;div class="modal fade" id="previewModal" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog modal-dialog-scrollable" role="document"&gt;
+    &lt;div class="modal-content bg"&gt;
+      &lt;div class="modal-body"&gt;
+        &lt;h3 class="modal-title"&gt;modal 標題&lt;/h3&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit doloremque dolorem quam laboriosam saepe tempore deserunt facilis ullam cupiditate voluptatum non temporibus vitae nobis, omnis libero molestias alias ea a.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer justify-content-center pt-none"&gt;
+        &lt;button class="b-btn-primary w-100 mb-sm" data-size="lg" type="button" data-dismiss="modal"&gt;送出&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <!-- popup 確認 -->
+      <h5 id="modalConfirmPopup" class="text-h5 pt-sm">👉 popup 確認</h5>
+      <button class="b-btn-default mb-md" data-size="md" data-toggle="modal" data-target="#confirmModal">確認跳窗</button>
+      <div class="modal fade" id="confirmModal" data-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-img" data-type="success"></div>
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <h3 class="modal-title">資料已送審</h3>
+              <p class="text-A b-caption">※ 若資料需修改，請於內部進行駁回再進行調整</p>
+            </div>
+            <div class="modal-footer justify-content-center pt-none">
+              <button class="b-btn-primary w-100 mb-sm" data-size="lg" type="button"
+                data-dismiss="modal">上架其他商品</button>
+              <button class="b-btn-default text w-100 mb-none" data-size="lg" type="button"
+                data-dismiss="modal">返回</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;button class="b-btn-default" data-size="md" data-toggle="modal" data-target="#confirmModal"&gt;確認跳窗&lt;/button&gt;
+
+&lt;div class="modal fade" id="confirmModal" data-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog modal-sm" role="document"&gt;
+    // modal 狀態(見下表)
+    &lt;div class="modal-img" data-type="success"&gt;&lt;/div&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-body text-center"&gt;
+        &lt;h3 class="modal-title"&gt;資料已送審&lt;/h3&gt;
+        &lt;p class="text-A b-caption"&gt;※ 若資料需修改，請於內部進行駁回再進行調整&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer justify-content-center pt-none"&gt;
+        &lt;button class="b-btn-primary w-100 mb-sm" data-size="lg" type="button" data-dismiss="modal"&gt;上架其他商品&lt;/button&gt;
+        &lt;button class="b-btn-default text w-100 mb-none" data-size="lg" type="button" data-dismiss="modal"&gt;返回&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <table class="element-table table shadow-1 mb-xl" style="width: 600px">
+        <tr>
+          <td>error modal</td>
+          <td>.modal-img[data-type='error']</td>
+        </tr>
+        <tr>
+          <td>success modal</td>
+          <td>.modal-img[data-type='success']</td>
+        </tr>
+        <tr>
+          <td>warning modal</td>
+          <td>.modal-img[data-type='warning']</td>
+        </tr>
+      </table>
+    </section>
+    <!-- form -->
+    <section class="box">
+      <h3 id="form" class="text-h3 pt-xl">Form</h3>
+      <!-- input -->
+      <h5 id="formInput" class="text-h5 pt-sm">👉 input</h5>
+      <div class="b-text-field d-block">
+        <label>欄位
+          <span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"><span class="material-icons">info</span></span>
+        </label>
+        <div class="b-field-group">
+          <div class="b-field-row">
+            <div class="b-input-wrap">
+              <input class="b-input max-w-none mr-none" type="text" v-model="form.txtInput" placeholder="請輸入文字">
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;label&gt;欄位
+    &lt;span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"&gt;&lt;span class="material-icons"&gt;info&lt;/span&gt;&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;div class="b-input-wrap"&gt;
+        &lt;!-- 使用 vue 資料綁定 --&gt;
+        &lt;input class="b-input max-w-none mr-none" type="text" v-model="form.txtInput" placeholder="請輸入文字"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //input 資料綁定
+      form: {
+        txtInput: '',
+      },
+    }
+  }
+})
+      </code></pre>
+      <div class="b-text-field d-block">
+        <label>字數限制欄位
+          <span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"><span class="material-icons">info</span></span>
+        </label>
+        <div class="b-field-group">
+          <div class="b-field-row">
+            <div class="b-input-wrap">
+              <input class="b-input width-400  max-w-none mr-none" type="text" v-model="form.input" maxlength="20" placeholder="請輸入文字">
+              <span class="b-input-hint">({{form.input.length}}/20)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;label&gt;字數限制欄位
+    &lt;span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"&gt;&lt;span class="material-icons"&gt;info&lt;/span&gt;&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;div class="b-input-wrap"&gt;
+        &lt;!-- 使用 vue 資料綁定 --&gt;
+        &lt;input class="b-input width-400  max-w-none mr-none" type="text" v-model="form.input" maxlength="20" placeholder="請輸入文字"&gt;
+        &lt;span class="b-input-hint"&gt;({ {form.input.length}}/20)&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //input 資料綁定
+      form: {
+        input: '',
+      },
+    }
+  }
+})
+      </code></pre>
+      <div class="b-text-field d-block">
+        <label>Tag input</label>
+        <div class="b-field-group">
+          <div class="b-field-row">
+            <div class="b-input-wrap">
+              <input type="text" class="width-400" :value="form.freeTag" data-role="tagsinput" placeholder="新增標籤">
+            </div>
+            <div class="toolbar"><button type="button" class="b-btn-primary outline ml-none" data-size="sm"><span>新增</span></button></div>
+          </div>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;label&gt;Tag input&lt;/label&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;div class="b-input-wrap"&gt;
+        &lt;input type="text" class="width-400" :value="form.freeTag" data-role="tagsinput" placeholder="新增標籤"&gt;
+      &lt;/div&gt;
+      &lt;div class="toolbar"&gt;&lt;button type="button" class="b-btn-primary outline ml-none" data-size="sm"&gt;&lt;span&gt;新增&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //input 資料綁定
+      form: {
+        freeTag: [],
+      },
+    }
+  }
+})
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+&lt;script src='js/bootstrap-tagsinput.min.js'&gt;&lt;/script&gt;
+      </code></pre>
+      <!-- select -->
+      <h5 id="formSelect" class="text-h5 pt-sm">👉 select</h5>
+      <div class="b-text-field d-block">
+        <div class="b-field-group">
+          <div class="b-field-row">
+            <div class="b-input-wrap">
+              <v-select class="b-select" placeholder="單選" :options="form.select.option"
+                v-model="form.select.value" :clearable="false"></v-select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;div class="b-input-wrap"&gt;
+        &lt;!-- 使用 vue 資料綁定 --&gt;
+        &lt;v-select class="b-select" placeholder="單選" :options="form.select.option"
+          v-model="form.select.value"&gt;&lt;/v-select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //select 資料綁定
+      form: {
+        select: {
+          value: '',
+          option: [
+            { value: 'select1', label: '選項一' },
+            { value: 'select2', label: '選項二' },
+            { value: 'select3', label: '選項三' },
+          ]
+        }
+      },
+    }
+  }
+})
+      </code></pre>
+      <p class="caption">更多關於 vue select 的說明 <a class="link-primary"
+        href="https://vue-select.org/api/props.html#clearable" target="_blank">請見此處</a>。</p>
+      <div class="b-text-field d-block">
+        <div class="b-field-group">
+          <div class="b-field-row">
+            <v-select class="b-select width-400" multiple v-model="form.areaGroup.value" :options="form.areaGroup.option" autocomplete="off" placeholder="多選"></v-select>
+          </div>
+        </div>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;v-select class="b-select width-400" multiple v-model="form.areaGroup.value" :options="form.areaGroup.option" autocomplete="off" placeholder="多選"&gt;&lt;/v-select&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //select 資料綁定
+      form: {
+        areaGroup: {
+          value: [],
+          validation: true,
+          option: [
+            {label: '臺北市', value: 'TaipeiCity', disabled: true},
+            {label: '基隆市', value: 'Keelung', disabled: false},
+            {label: '新北市', value: 'NewTaipeiCity', disabled: false},
+            {label: '宜蘭縣', value: 'YilanCounty', disabled: false},
+            {label: '桃園市', value: 'TaoyuanCity', disabled: false},
+            {label: '新竹市', value: 'HsinchuCity', disabled: false},
+            {label: '新竹縣', value: 'HsinchuCounty', disabled: false},
+            {label: '苗栗縣', value: 'MiaoliCounty', disabled: false},
+            {label: '台中市', value: 'Taichung', disabled: false},
+            {label: '彰化縣', value: 'ChanghuaCounty', disabled: false},
+            {label: '南投縣', value: 'NantouCounty', disabled: false},
+            {label: '嘉義市', value: 'ChiayiCity', disabled: false},
+            {label: '嘉義縣', value: 'ChiayiCounty', disabled: false},
+            {label: '雲林縣', value: 'YunlinCounty', disabled: false},
+            {label: '台南市', value: 'TainanCity', disabled: false},
+            {label: '高雄市', value: 'KaohsiungCity', disabled: false},
+            {label: '屏東縣', value: 'PingtungCounty', disabled: false},
+            {label: '台東縣', value: 'TaitungCounty', disabled: false},
+            {label: '花蓮縣', value: 'HualienCounty', disabled: false},
+          ],
+        }
+      },
+    }
+  }
+})
+      </code></pre>
+      <pre class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+&lt;script src="js/vue-select.js"&gt;&lt;/script&gt;
+      </code></pre>
+      <!-- textarea -->
+      <h5 id="formTextarea" class="text-h5 pt-sm">👉 textarea</h5>
+      <div class="b-text-field d-block">
+        <div class="b-field-row">
+          <div class="b-input-wrap">
+            <textarea class="b-textarea" rows="4" cols="48" v-model="form.textarea" placeholder="請輸入文字"
+              maxlength="1000" required></textarea>
+            <span class="b-input-hint">({{ form.textarea.length }}/1000)</span>
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;div class="b-field-row"&gt;
+    &lt;div class="b-input-wrap"&gt;
+      &lt;!-- 使用 vue 資料綁定 --&gt;
+      &lt;textarea class="b-textarea" rows="4" cols="48" v-model="form.textarea"
+        placeholder="請輸入文字" maxlength="1000" required&gt;&lt;/textarea&gt;
+        &lt;span class="b-input-hint"&gt;({ {form.textarea.length}}/1000)&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre> 
+      <pre class="mt-md"><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      //textarea 資料綁定
+      form: {
+        textarea: '',
+      },
+    }
+  }
+})
+      </code></pre>
+      <!-- radio -->
+      <h5 id="formRadio" class="text-h5 pt-sm">👉 radio</h5>
+      <div class="b-field-row mb-md">
+        <div class="b-radio mb-none">
+          <input type="radio" id="value1" value="value" name="radioBox" checked >
+          <label for="value1">選項一</label>
+        </div>
+        <div class="b-radio mb-none">
+          <input type="radio" id="value2" value="value" name="radioBox">
+          <label for="value2">選項二</label>
+        </div>
+        <div class="b-radio mb-none">
+          <input type="radio" id="value3" value="value" name="radioBox">
+          <label for="value3">選項三</label>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-field-row mb-md"&gt;
+  &lt;div class="b-radio mb-none"&gt;
+    &lt;input type="radio" id="value1" value="value1" name="radioBox" checked&gt;
+    &lt;label for="value1"&gt;選項一&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="b-radio mb-none"&gt;
+    &lt;input type="radio" id="value2" value="value2" name="radioBox"&gt;
+    &lt;label for="value2"&gt;選項二&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="b-radio mb-none"&gt;
+    &lt;input type="radio" id="value3" value="value3" name="radioBox"&gt;
+    &lt;label for="value3"&gt;選項三&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre> 
+      <!-- checkbox -->
+      <h5 id="formCheckbox" class="text-h5 pt-sm">👉 checkbox</h5>
+      <div class="b-field-row mb-md">
+        <div class="b-checkbox mb-none">
+          <input type="checkbox" id="checkbox1" value="checkbox1" name="checkBox" checked>
+          <label for="checkbox1">選項一</label>
+        </div>
+        <div class="b-checkbox mb-none">
+          <input type="checkbox" id="checkbox2" value="checkbox2" name="checkBox">
+          <label for="checkbox2">選項二</label>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-field-row mb-md"&gt;
+  &lt;div class="b-checkbox mb-none"&gt;
+    &lt;input type="checkbox" id="checkbox1" value="checkbox1" name="checkBox" checked&gt;
+    &lt;label for="checkbox1"&gt;選項一&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="b-checkbox mb-none"&gt;
+    &lt;input type="checkbox" id="checkbox2" value="checkbox2" name="checkBox"&gt;
+    &lt;label for="checkbox2"&gt;選項二&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre> 
+      <!-- datepicker -->
+      <h5 id="formDatepicker" class="text-h5">👉 datepicker/timepicker</h5>
+      <div class="b-text-field d-block">
+        <div class="b-field-row mb-none">
+          <div class="b-input-wrap">
+            <input class="b-input mr-none" id="date" type="text" placeholder="日期">
+          </div>
+          <div class="b-input-wrap">
+            <input class="b-input mr-none" id="time" type="text" placeholder="時間">
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;div class="b-field-row mb-none"&gt;
+    &lt;div class="b-input-wrap"&gt;
+      &lt;input class="b-input mr-none" id="date" type="text" placeholder="日期"&gt;
+    &lt;/div&gt;
+    &lt;div class="b-input-wrap"&gt;
+      &lt;input class="b-input mr-none" id="time" type="text" placeholder="時間"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre> 
+      <pre class="mt-md"><code class="js">
+&lt;!-- js --&gt;
+&lt;script src="js/flatpickr.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  var jQfn = function (){
+    flatpickr('#date', {
+      static: true,
+      dateFormat: "Y/m/d",
+      minDate: new Date().fp_incr(5),
+    })
+    flatpickr('#time', {
+      enableTime: true,
+      enableSecond: true,
+      noCalendar: true,
+      dateFormat: "H:i",
+      time_24hr: true,
+    })
+  }
+&lt;/script&gt;
+      </code></pre>
+      <p class="caption">更多關於 flatpickr 的說明 <a class="link-primary" href="https://flatpickr.js.org/examples/"
+        target="_blank">請見此處</a>。</p>
+      <!-- upload -->
+      <h5 id="formUpload" class="text-h5">👉 upload</h5>
+      <div class="b-text-field d-block">
+        <label>上傳圖片<span>*</span><span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" data-html="true" :title="previewBackpack"><span class="material-icons">info</span></span></label>
+        <div class="b-field-group">
+          <div class="b-field-row mb-none">
+            <label class="b-btn-primary outline ml-none" for="previewImg" data-size="md">選擇檔案
+              <input type="file" id="previewImg" accept=".png, .jpg, .jpeg" @change="backpackImgPreview">
+            </label>
+            <p class="mx-sm mt-xxs" v-if="previewImg.name">{{ previewImg.name }} ({{ previewImg.size }}KB)</p>
+            <span class="b-caption d-block pt-xs">670x376 .jpg or .png (<100KB)</span>
+          </div>
+          <div class="b-field-row mb-none">
+            <template v-if="previewImg.value">
+              <div class="img-preview mb-md" data-type="backpack"><img :src="previewImg.value"></div>
+            </template>
+            <template v-if="previewImg.alert">
+              <div class="alert alert-danger">{{ previewImg.name }} {{ previewImg.alert }}</div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block"&gt;
+  &lt;label&gt;上傳圖片&lt;span&gt;*&lt;/span&gt;&lt;span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" data-html="true" :title="previewBackpack"&gt;&lt;span class="material-icons"&gt;info&lt;/span&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;div class="b-field-group"&gt;
+    &lt;div class="b-field-row mb-none"&gt;
+      &lt;label class="b-btn-primary outline ml-none" for="previewImg" data-size="md"&gt;選擇檔案
+        &lt;input type="file" id="previewImg" accept=".png, .jpg, .jpeg" @change="backpackImgPreview"&gt;
+      &lt;/label&gt;
+      &lt;p class="mx-sm mt-xxs" v-if="previewImg.name"&gt;{ {previewImg.name}} ({ {previewImg.size}}KB)&lt;/p&gt;
+      &lt;span class="b-caption d-block pt-xs"&gt;670x376 .jpg or .png (&lt;100KB)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="b-field-row mb-none"&gt;
+      &lt;template v-if="previewImg.value"&gt;
+        &lt;div class="img-preview mb-md" data-type="backpack"&gt;&lt;img :src="previewImg.value"&gt;&lt;/div&gt;
+      &lt;/template&gt;
+      &lt;template v-if="previewImg.alert"&gt;
+        &lt;div class="alert alert-danger"&gt;{ {previewImg.name }} { {previewImg.alert }}&lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    previewImg:{
+      value: '',
+      name: '',
+      alert: '',
+      validation: true,
+    },
+  },
+  methods: {
+    backpackImgPreview: function(e) {
+      const file = e.target.files[0];
+      this.previewImg.name = file.name;
+      if( file.size / 1024 < 80) {
+        this.previewImg.value = URL.createObjectURL(file);
+        this.previewImg.size = (file.size / 1024).toFixed(2);
+        this.previewImg.alert = ''
+      } else {
+        this.previewImg.value = '';
+        this.previewImg.size = '';
+        this.previewImg.alert = '檔案尺寸過大'
+      }
+    },
+  }
+})
+      </code></pre>
+      <!-- 多張圖片 -->
+      <div class="b-text-field d-block pt-xs">
+        <label>上傳多張圖片<span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" data-html="true" title="&lt;p&gt;詳細說明中的圖檔&lt;/p&gt;&lt;img class='w-100' src='./img/demo/content-img.png' alt=''/&gt;"><span class="material-icons">info</span></span></label>
+        <div class="b-field-group"> 
+          <div class="b-field-row mb-xs">
+            <label class="b-btn-primary outline ml-none" for="detailImgUpload" data-size="md">選擇檔案
+              <input type="file" id="detailImgUpload" accept=".png, .jpg, .jpeg" multiple="multiple">
+            </label>
+            <p class="b-caption pt-xs">最多上傳五張，大小不得超過 1 MB</p>
+          </div>
+          <div class="b-field-row">
+            <template v-for="(item,idx) in form.productDescImg">
+              <div class="upload-img-preview"><img class="preview" data-size="small" :src="item.src">
+                <ul> 
+                  <li class="b-caption">{{item.name}}</li>
+                  <li class="b-caption">大小: {{item.size}} KB</li>
+                </ul>
+                <label class="b-btn-secondary outline imageChange" :for="'changeFile'+idx" data-size="xs" type="button">替換圖片
+                  <input type="file" :id="'changeFile'+idx" accept=".png, .jpg, .jpeg" :data-idx="idx" multiple="multiple">
+                </label><br>
+                <button class="b-btn-danger outline" data-size="xs" type="button" @click="removeImg(idx)">移除圖片</button>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="b-text-field d-block pt-xs"&gt;
+  &lt;label&gt;上傳多張圖片&lt;span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" data-html="true" title="&lt;p&gt;詳細說明中的圖檔&lt;/p&gt;&lt;img class='w-100' src='./img/demo/content-img.png' alt=''/&gt;"&gt;&lt;span class="material-icons"&gt;info&lt;/span&gt;&lt;/span&gt;&lt;/label&gt;
+  &lt;div class="b-field-group"&gt; 
+    &lt;div class="b-field-row mb-xs"&gt;
+      &lt;label class="b-btn-primary outline ml-none" for="detailImgUpload" data-size="md"&gt;選擇檔案
+        &lt;input type="file" id="detailImgUpload" accept=".png, .jpg, .jpeg" multiple="multiple"&gt;
+      &lt;/label&gt;
+      &lt;p class="b-caption pt-xs"&gt;最多上傳五張，大小不得超過 1 MB&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="b-field-row"&gt;
+      &lt;template v-for="(item,idx) in form.productDescImg"&gt;
+        &lt;div class="upload-img-preview"&gt;&lt;img class="preview" data-size="small" :src="item.src"&gt;
+          &lt;ul&gt; 
+            &lt;li class="b-caption"&gt;{ {item.name}}&lt;/li&gt;
+            &lt;li class="b-caption"&gt;大小: { {item.size}} KB&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;label class="b-btn-secondary outline imageChange" :for="'changeFile'+idx" data-size="xs" type="button"&gt;替換圖片
+            &lt;input type="file" :id="'changeFile'+idx" accept=".png, .jpg, .jpeg" :data-idx="idx" multiple="multiple"&gt;
+          &lt;/label&gt;&lt;br&gt;
+          &lt;button class="b-btn-danger outline" data-size="xs" type="button" @click="removeImg(idx)"&gt;移除圖片&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <pre><code class="js">
+&lt;!-- vue --&gt;
+var vm = new Vue({
+  el: '#app',
+  data() {
+    form: {
+      productDescImg: [],
+    },
+  },
+  methods: {
+    //移除圖片
+    removeImg: function(idx, type){
+      if (type) {
+        vm.collection.blindFiles.splice(idx,1)
+      } else {
+        vm.form.productDescImg.splice(idx,1)
+      }
+    },
+  },
+  updated: function () {
+    this.$nextTick(function () {
+      jQfn()
+    })
+  },
+})
+      </code></pre>
+      <pre><code class="js">
+&lt;!-- js --&gt;
+&lt;script&gt;
+  var jQfn = function (){
+    // 圖片數量限制
+    $("#main-content").on("change", "#detailImgUpload", function (e){
+      let file = e.target.files;
+      for(let i=0;i< 5; i++) {
+        if(vm.form.productDescImg.length<5) {
+          if(e.target.files === undefined) {return}
+          let imgData = {}
+          imgData.name = file[i].name
+          imgData.size = size_format_float(file[i].size / 1024, 2);
+          imgData.src = URL.createObjectURL(file[i]);
+          vm.form.productDescImg.push(imgData)
+        }
+      }
+    })
+   // 替換圖片
+    $("#main-content").on("change", ".imageChange", function (e){
+      let file = e.target.files;
+      let imgId = e.target.getAttribute("data-idx")
+      let imgData = {}
+      vm.form.productDescImg[imgId].name = file[0].name
+      vm.form.productDescImg[imgId].size = size_format_float(file[0].size / 1024, 2);
+      vm.form.productDescImg[imgId].src = URL.createObjectURL(file[0]);
+    })
+  }
+  &lt;/script&gt;
+      </code></pre>
+      <h6 class="text-h6">預覽尺寸類型</h6>
+      <table class="element-table table shadow-1 mb-xl autosize" style="width: 600px">
+        <tr>
+          <td>[data-type="bc"] </td>
+          <td>
+            <div class="img-preview" data-type="bc">
+              <img src="./img/demo/backpack-detail.png"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>[data-type="backpack"]</td>
+          <td>
+            <div class="img-preview" data-type="backpack">
+              <img src="./img/demo/backpack-detail.png"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>[data-type="marketSmall"]</td>
+          <td>
+            <div class="img-preview" data-type="marketSmall">
+              <img src="./img/demo/backpack-detail.png"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>[data-type="marketBig"]</td>
+          <td>
+            <div class="img-preview" data-type="marketBig">
+              <img src="./img/demo/backpack-detail.png"/>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </section>
+    <!-- alert -->
+    <section class="box">
+      <h3 id="alert" class="text-h3 pt-xl">Alert</h3>
+      <div class="alert alert-danger d-inline-block">訊息內容</div>
+      <div class="alert alert-warning d-inline-block">訊息內容</div>
+      <div class="alert alert-info d-inline-block">訊息內容</div>
+      <div class="alert alert-success d-inline-block">訊息內容</div>
+      <pre><code class="html">
+&lt;!-- html --&gt;
+&lt;div class="alert alert-danger d-inline-block"&gt;訊息內容&lt;/div&gt; 
+      </code></pre>
+      <table class="element-table table shadow-1 mb-xl" style="width: 600px">
+        <tr>
+          <td>顏色 </td>
+          <td>danger, warning, info, success </td>
+        </tr>
+      </table>
+    </section>
+    <!-- badge -->
+    <section class="box">
+      <h3 id="badge" class="text-h3 pt-xl">Badge</h3>
+      <span class="badge-draft">badge</span>
+      <span class="badge-danger">badge</span>
+      <span class="badge-warning">badge</span>
+      <span class="badge-info">badge</span>
+      <span class="badge-success">badge</span>
+      <pre><code class="html mt-md">
+  &lt;span class="badge-draft"&gt;badge&lt;/span&gt; 
+      </code></pre>
+      <table class="element-table table shadow-1 mb-xl" style="width: 600px">
+        <tr>
+          <td>顏色 </td>
+          <td>draft, danger, warning, info, success </td>
+        </tr>
+      </table>
+    </section>
+    <!-- button -->
+    <section class="box">
+      <h3 id="button" class="text-h3 pt-xl">Button</h3>
+      <h5 class="text-h5 mb-sm">👉 Button</h5>
+      <div class="d-flex f-wrap align-items-start">
+        <button class="b-btn-default" data-size="xs">Button </button>
+        <button class="b-btn-default" data-size="sm">Button </button>
+        <button class="b-btn-default" data-size="md">Button </button>
+        <button class="b-btn-default" data-size="lg">Button </button>
+        <button class="b-btn-default" data-size="xl">Button </button>
+      </div>
+      <div class="pb-md">
+        <button class="b-btn-default" data-size="md">Button </button>
+        <button class="b-btn-primary" data-size="md">Button </button>
+        <button class="b-btn-primary-light" data-size="md">Button </button>
+        <button class="b-btn-secondary" data-size="md">Button </button>
+        <button class="b-btn-secondary-light" data-size="md">Button </button>
+        <button class="b-btn-success" data-size="md">Button </button>
+        <button class="b-btn-danger" data-size="md">Button </button>
+      </div>
+      <div class="pb-md">
+        <button class="b-btn-default" data-size="md">Button </button>
+        <button class="b-btn-default outline" data-size="md">Button </button>
+        <button class="b-btn-default flat" data-size="md">Button </button>
+        <button class="b-btn-default" disabled data-size="md">Button </button>
+        <button class="b-btn-default" data-loading="true" data-size="md">Button11</button>
+      </div>
+
+      <!-- 按鈕程式碼 -->
+      <pre><code class="html">
+&lt;button data-size="xs" class="b-btn-secondary"&gt;Button&lt;/button&gt; 
+      </code></pre>
+      <table class="element-table table shadow-1 mb-xl" style="width: 600px">
+        <tr>
+          <td>按鈕尺寸 </td>
+          <td>xs, sm, md, lg, xl 修改 data-size 屬性 </td>
+        </tr>
+        <tr>
+          <td>按鈕顏色 </td>
+          <td>.b-btn-default, .b-btn-primary, .b-btn-primary-light, .b-btn-secondary, .b-btn-secondary-light,
+            .b-btn-success, .b-btn-danger</td>
+        </tr>
+        <tr>
+          <td>按鈕類型 </td>
+          <td>預設, outline, flat </td>
+        </tr>
+      </table>
+      <h5 class="text-h5 mb-sm">👉 icon + text</h5>
+      <div class="pb-md">
+        <button class="b-btn-primary text"> 
+          <span class="material-icons">delete</span>
+          刪除
+        </button>
+        <!-- <button class="b-btn-primary text"> 
+          <span class="material-icons">add</span>
+          增加
+        </button> -->
+      </div>
+      <pre><code class="html">
+&lt;button class="b-btn-primary text"&gt; 
+  &lt;span class="material-icons"&gt;delete&lt;/span&gt;刪除
+&lt;/button&gt;
+      </code></pre>
+      <p class="caption">更多 icon 樣式，請見 <a class="link-primary" href="https://fonts.google.com/icons?selected=Material+Symbols+Outlined:close:FILL@0;wght@400;GRAD@0;opsz@48"
+        target="_blank">google icon</a> 內 Inserting the icon 方式。</p>
+    </section>
+    <!-- progress -->
+    <section class="box">
+      <h3 id="progress" class="text-h3 pt-xl">Progress & Step</h3>
+      <h5 class="text-h5 mb-sm">👉 Progress</h5>
+      <p class="mb-sm">改自 bootstrap 4 的 progress</p>
+      <div class="progress b-progress width-150">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+          :aria-valuenow="fileProgress" aria-valuemin="0" aria-valuemax="100" :style="{width: fileProgress+'%'}">
+        </div>
+      </div>
+      <pre class="mt-sm"><code class="html">
+&lt;div class="progress b-progress width-150"&gt;
+  &lt;div class="progress-bar progress-bar-striped progress-bar-animated" 
+  role="progressbar" :aria-valuenow="fileProgress" aria-valuemin="0" aria-valuemax="100" :style="{width: fileProgress+'%'}"&gt;&lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <h5 class="text-h5">👉 Steps</h5>
+      <div class="status">
+        <div class="step previous">
+          <span class="step-label">1</span>
+          <span class="step-name">步驟一</span>
+        </div>
+        <div class="step">
+          <span class="step-label">2</span>
+          <span class="step-name">步驟二</span>
+        </div>
+        <div class="step next">
+          <span class="step-label">3</span>
+          <span class="step-name">步驟三</span>
+        </div>
+        <div class="step next">
+          <span class="step-label">4</span>
+          <span class="step-name">步驟四</span>
+        </div>
+      </div>
+      <pre class="mt-sm"><code class="html">
+&lt;div class="status"&gt; 
+  &lt;div class="step previous"&gt;
+    &lt;span class="step-label"&gt;1&lt;/span&gt;
+    &lt;span class="step-name"&gt;步驟一&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="step"&gt;
+    &lt;span class="step-label"&gt;2&lt;/span&gt;
+    &lt;span class="step-name"&gt;步驟二&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="step next"&gt;
+    &lt;span class="step-label"&gt;3&lt;/span&gt;
+    &lt;span class="step-name"&gt;步驟三&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="step next"&gt;
+    &lt;span class="step-label"&gt;4&lt;/span&gt;
+    &lt;span class="step-name"&gt;步驟四&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </code></pre>
+      <table class="element-table table shadow-1 mb-xl" style="width: 600px">
+        <tr>
+          <td>目前步驟</td>
+          <td>不設定 class</td>
+        </tr>
+        <tr>
+          <td>已完成步驟</td>
+          <td>.previous</td>
+        </tr>
+        <tr>
+          <td>未完成步驟</td>
+          <td>.next</td>
+        </tr>
+      </table>
+    </section>
+    <!-- tab -->
+    <section class="box">
+      <h3 id="tab" class="text-h3 pt-xl">Tab</h3>
+      <ul class="b-tabs">
+        <li class="b-tab-item">
+          <a class="b-tab-link" :class="currentTab == 'tab1'? 'active': ''" @click="currentTab = 'tab1'">tab1</a>
+        </li>
+        <li class="b-tab-item">
+          <a class="b-tab-link" :class="currentTab == 'tab2'? 'active': ''" @click="currentTab = 'tab2'">tab2</a>
+        </li>
+      </ul>
+      <div class="bg-white p-xl shadow-1" v-show="currentTab == 'tab1'">
+        <p>tab1 的內容</p>
+      </div>
+      <div class="bg-white p-xl shadow-1" v-show="currentTab == 'tab2'">
+        <p>tab2 的內容</p>
+      </div>
+      <pre class="mt-md"><code class="html">
+&lt;ul class="b-tabs"&gt;
+  &lt;li class="b-tab-item"&gt;
+    &lt;a class="b-tab-link" class="currentTab == 'tab1'? 'active': ''" @click="currentTab = 'tab1'"&gt;tab1&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="b-tab-item"&gt;
+    &lt;a class="b-tab-link" :class="currentTab == 'tab2'? 'active': ''" @click="currentTab = 'tab2'"&gt;tab2&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="bg-white p-xl shadow-1" v-show="currentTab == 'tab1'"&gt;
+  &lt;p&gt;tab1 的內容&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="bg-white p-xl shadow-1" v-show="currentTab == 'tab2'"&gt;
+  &lt;p&gt;tab2 的內容&lt;/p&gt;
+&lt;/div&gt;
+      </code></pre>
+    </section>
+    <!-- tooltip -->
+    <section class="box">
+      <h3 id="tooltip" class="text-h3 pt-xl">Tooltip</h3>
+      <p>bootstrap tooltip 要引入的東西有點多。</p>
+      <label>滑鼠請 hover →<span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"><span
+        class="material-icons">info</span></span></label>
+      <pre class="mt-md"><code class="jd">
+&lt;span class="tooltip-btn pl-xs" data-toggle="tooltip" data-placement="right" title="備註內容"&gt;
+  &lt;span class="material-icons"&gt;info&lt;/span&gt;
+&lt;/span&gt;
+...
+// 除了 bootstrap 之外還需要引入 popper.js
+&lt;script src="js/popper.min.js"&gt;&lt;/script&gt;
+// 另外需要初始化
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})
+      </code></pre>
+      <label>插入 html or 圖片的寫法，滑鼠請 hover →
+        <span class="tooltip-btn pl-xs"  data-toggle="tooltip" data-placement="right" data-html="true" :title="previewBackpack">
+          <span class="material-icons">info</span>
+        </span>
+      </label>
+      <p>設定 [data-html="true"] 屬性，就可以在 title 中塞入 html tag</p>
+      <pre class="mt-md"><code class="jd">
+&lt;span class="tooltip-btn pl-xs"  data-toggle="tooltip" data-placement="right" data-html="true" :title="previewBackpack"&gt;
+  &lt;span class="material-icons"&gt;info&lt;/span&gt;
+&lt;/span&gt;
+...
+// 除了 bootstrap 之外還需要引入 popper.js
+&lt;script src="js/popper.min.js"&gt;&lt;/script&gt;
+// 另外需要初始化
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+})
+var vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      previewBackpack: `
+        &lt;p>資產在背包內呈現所使用的圖片&lt;/p&gt;
+        &lt;p&gt;圖片安全範圍示意&lt;/p&gt;
+        &lt;img class='w-100' src='./img/demo/safe.png', alt=''/&gt;
+        &lt;p&gt;背包資產細節&lt;/p&gt;
+        &lt;img class='w-100' src='./img/demo/backpack-list.png', alt=''/&gt;
+        &lt;img class='w-100' src='./img/demo/backpack-detail.png', alt=''/&gt;
+      `,
+    }
+  }
+})
+      </code></pre>
+    </section>
+
+    <script src="js/vue.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src='js/bootstrap-tagsinput.min.js'></script>
+    <script src="js/datatables.min.js"></script>
+    <script src="js/flatpickr.js"></script>
+    <script src="js/vue-select.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script>
+      Vue.component('v-select', VueSelect.VueSelect)
+      var jQfn = function () {
+        flatpickr('#dateRangeStart',{
+          static: true,
+          enableTime: true,
+          enableSeconds: true,
+          dateFormat: "Y/m/d H:i:s",
+          minDate: new Date(),
+        })
+        flatpickr('#dateRangeEnd',{
+          static: true,
+          enableSeconds: true,
+          enableTime: true,
+          dateFormat: "Y/m/d H:i:s",
+          minDate: vm.searchDateStart,
+        })
+        flatpickr('#date', {
+          static: true,
+          dateFormat: "Y/m/d",
+          minDate: new Date().fp_incr(5),
+        })
+        flatpickr('#time', {
+          enableTime: true,
+          enableSecond: true,
+          noCalendar: true,
+          dateFormat: "H:i",
+          time_24hr: true,
+        })
+        // 商品說明圖預覽圖片
+        $("#main-content").on("change", "#detailImgUpload", function (e){
+          let file = e.target.files;
+          for(let i=0;i< 5; i++) {
+            if(vm.form.productDescImg.length<5) {
+              if(e.target.files === undefined) {return}
+              let imgData = {}
+
+              imgData.name = file[i].name
+              imgData.size = size_format_float(file[i].size / 1024, 2);
+              imgData.src = URL.createObjectURL(file[i]);
+              vm.form.productDescImg.push(imgData)
+            }
+          }
+        })
+        // 商品說明圖修改
+        $("#main-content").on("change", ".imageChange", function (e){
+          let file = e.target.files;
+          let imgId = e.target.getAttribute("data-idx")
+          let imgData = {}
+          vm.form.productDescImg[imgId].name = file[0].name
+          vm.form.productDescImg[imgId].size = size_format_float(file[0].size / 1024, 2);
+          vm.form.productDescImg[imgId].src = URL.createObjectURL(file[0]);
+        })
+
+      }
+      var vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            menus: [
+              { name: 'Color', id: 'color' },
+              { name: 'Template', id: 'template' },
+              { name: 'Navigation', id: 'navigation' },
+              {
+                name: 'Modal', id: 'modal', submenuExpand: false,
+                option: [
+                  { name: '麵包屑導覽', id: 'modalBreadcrumb' },
+                  { name: '單元標題', id: 'modalTitleWrap' },
+                  { name: '搜尋區塊', id: 'modalSearchGroup' },
+                  { name: 'table 列表', id: 'modalListTable' },
+                  { name: 'table 摺疊', id: 'modalRoleTable' },
+                  { name: 'selector 類別', id: 'modalCategorySelector' },
+                  { name: 'popup 一般', id: 'modalDefaultPopup' },
+                  { name: 'popup 確認', id: 'modalConfirmPopup' },
+                ]
+              },
+              {
+                name: 'Form', id: 'form', submenuExpand: false,
+                option: [
+                  { name: 'input', id: 'formInput' },
+                  { name: 'select', id: 'formSelect' },
+                  { name: 'textarea', id: 'formTextarea' },
+                  { name: 'radio', id: 'formRadio' },
+                  { name: 'checkbox', id: 'formCheckbox' },
+                  { name: 'datepicker', id: 'formDatepicker' },
+                  { name: 'upload', id: 'formUpload' },
+                ]
+              },
+              { name: 'Alert', id: 'alert' },
+              { name: 'Badge', id: 'badge' },
+              { name: 'Button', id: 'button' },
+              { name: 'Progress', id: 'progress' },
+              { name: 'Tab', id: 'tab' },
+              { name: 'Tooltip', id: 'tooltip' },
+            ],
+            //顏色
+            currentPage: 'color',
+            colors: [
+              { name: '$Primary', color: '#18c16e' },
+              { name: '$DarkPrimary', color: '#c0105f' },
+              { name: '$Secondary', color: '#322741' },
+              { name: '$DarkSecondary', color: '#2e281a' },
+              { name: '$contrast', color: '#18c16e' },
+              { name: '$danger', color: '#ff303e' },
+              { name: '$success', color: '#7DDB2B' },
+              { name: '$warning', color: '#ffc107' },
+              { name: '$info', color: '#00AEFF' },
+              { name: '$text-AAAA', color: '#494949' },
+              { name: '$text-AAA', color: '#545454' },
+              { name: '$text-AA', color: '#727272' },
+              { name: '$text-A', color: '#919191' },
+              { name: '$label-color', color: '#8988a7' },
+              { name: '$placeholder', color: '#A2A2A2' },
+            ],
+            //搜尋區塊
+            select: {
+              value: {label: 'select01', value: 1},
+              option: [
+                {label: 'select01', value: 1},
+                {label: 'select02', value: 2},
+                {label: 'select03', value: 3},
+              ],
+              validation: true
+            },
+            countryCodes: {
+              value:{value: '+886', label: '台灣 +886' },
+              option: [
+                {value: '+886', label: '台灣 +886',},
+                {value: '+86', label: '中國 +86'},
+                {value: '+853', label: '澳門 +853'},
+                {value: '+852', label: '香港 +852'},
+                {value: '+850', label: '北韓 +850'},
+                {value: '+84', label: '越南 +84'},
+                {value: '+82', label: '南韓 +82'},
+                {value: '+81', label: '日本 +81'},
+                {value: '+66', label: '泰國 +66'},
+                {value: '+65', label: '新加坡 +65'},
+                {value: '+63', label: '菲律賓 +63'},
+                {value: '+62', label: '印尼 +62'},
+                {value: '+61', label: '澳洲 +61'},
+                {value: '+60', label: '馬來西亞 +60'},
+                {value: '+49', label: '德國 +49'},
+                {value: '+44', label: '英國 +44'},
+                {value: '+39', label: '義大利 +39'},
+                {value: '+33', label: '法國 +33'},
+                {value: '+32', label: '比利時 +32'},
+                {value: '+31', label: '荷蘭 +31'},
+                {value: '+1', label: '加拿大 +1'},
+                {value: '+1', label: '美國 +1'},
+              ]
+            },
+            searchDateStart:'',
+            searchDateEnd:'',
+            //列表 table
+            tableData: [
+              {
+                status: '刊登中',
+                tag: '暢銷品',
+                name: '[熱門] 經典特色小丸子帽子',
+                itemCode: 'c2a98d80-9963-4640-862e-442ad15f2b3c',
+                copied: '',
+                price: '1,500',
+                stock: 10,
+                publishStart: '2021/12/23 23:59',
+                publishEnd: '2021/12/25 23:59',
+                cp: 'OX供應商',
+                update_time: '2021/8/9 19:00',
+              },
+            ],
+            //摺疊 table
+            roleTableData: [
+              {
+                "id": "1",
+                "cpName": "樂點股份有限公司(我不是胖虎2022)",
+                "subItem":[
+                    {
+                      "assets":"道具1",
+                      "path":"B2C",
+                      "platformFee":"0%",
+                      "paFee":"0%",
+                      "shareFee":"5%",
+                      "expenseFee":"50%",
+                    },
+                    {
+                      "assets":"道具2",
+                      "path":"C2C",
+                      "platformFee":"10%",
+                      "paFee":"5%",
+                      "shareFee":"5%",
+                      "expenseFee":"50%",
+                    },
+                ],
+              },
+            ],
+            //類別 selector
+            mainList: '',
+            mediumList: '',
+            smallList: '',
+            //text input
+            productName: { //商品顯示標題
+              placeholder: '請輸入商品顯示名稱',
+              maxlength: 22,
+              validation: ''
+            },
+            //form
+            form: {
+              txtInput: '',
+              input: '',
+              freeTag: [],
+              textarea: '',
+              select: {
+                value: '',
+                option: [
+                  { value: 'select1', label: '選項一' },
+                  { value: 'select2', label: '選項二' },
+                  { value: 'select3', label: '選項三' },
+                ]
+              },
+              areaGroup: {
+                value: [],
+                validation: true,
+                option: [
+                  {label: '臺北市', value: 'TaipeiCity', disabled: true},
+                  {label: '基隆市', value: 'Keelung', disabled: false},
+                  {label: '新北市', value: 'NewTaipeiCity', disabled: false},
+                  {label: '宜蘭縣', value: 'YilanCounty', disabled: false},
+                  {label: '桃園市', value: 'TaoyuanCity', disabled: false},
+                  {label: '新竹市', value: 'HsinchuCity', disabled: false},
+                  {label: '新竹縣', value: 'HsinchuCounty', disabled: false},
+                  {label: '苗栗縣', value: 'MiaoliCounty', disabled: false},
+                  {label: '台中市', value: 'Taichung', disabled: false},
+                  {label: '彰化縣', value: 'ChanghuaCounty', disabled: false},
+                  {label: '南投縣', value: 'NantouCounty', disabled: false},
+                  {label: '嘉義市', value: 'ChiayiCity', disabled: false},
+                  {label: '嘉義縣', value: 'ChiayiCounty', disabled: false},
+                  {label: '雲林縣', value: 'YunlinCounty', disabled: false},
+                  {label: '台南市', value: 'TainanCity', disabled: false},
+                  {label: '高雄市', value: 'KaohsiungCity', disabled: false},
+                  {label: '屏東縣', value: 'PingtungCounty', disabled: false},
+                  {label: '台東縣', value: 'TaitungCounty', disabled: false},
+                  {label: '花蓮縣', value: 'HualienCounty', disabled: false},
+                ],
+              },
+              productDescImg: [
+                  // {
+                  //     src: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/maxresdefault-1590898973.jpg',
+                  //     name: '小丸子圖片.jpg',
+                  //     size: 123
+                  // },
+              ],
+            },
+            //upload
+            previewBackpack: `
+              <p>資產在背包內呈現所使用的圖片</p>
+              <p>圖片安全範圍示意</p>
+              <img class='w-100' src='./img/demo/safe.png', alt=''/>
+              <p>背包資產細節</p>
+              <img class='w-100' src='./img/demo/backpack-list.png', alt=''/>
+              <img class='w-100' src='./img/demo/backpack-detail.png', alt=''/>
+            `,
+            previewImg:{
+              value: '',
+              name: '',
+              alert: '',
+              validation: true,
+            },
+            currentTab: 'tab1',
+            fileProgress: 45,
+            value: '',
+          }
+        },
+        mounted: function () {
+          this.$nextTick(function () {
+            hljs.initHighlightingOnLoad();
+            jQfn();
+          })
+        },
+        methods: {
+          copyAlert(idx) {
+            let input = document.querySelector('.list' + idx);
+            vm.tableData[idx].copied = true
+            input.select();
+            document.execCommand("copy");
+            window.setTimeout(function(){
+                vm.tableData[idx].copied = false
+            }, 1000);                  
+          },
+          backpackImgPreview: function(e) {
+            const file = e.target.files[0];
+            this.previewImg.name = file.name;
+            if( file.size / 1024 < 80) {
+              this.previewImg.value = URL.createObjectURL(file);
+              this.previewImg.size = (file.size / 1024).toFixed(2);
+              this.previewImg.alert = ''
+            } else {
+              this.previewImg.value = '';
+              this.previewImg.size = '';
+              this.previewImg.alert = '檔案尺寸過大'
+            }
+          },
+          //移除 upload 圖片
+          removeImg: function(idx, type){
+            if (type) {
+              vm.collection.blindFiles.splice(idx,1)
+            } else {
+              vm.form.productDescImg.splice(idx,1)
+            }
+          },
+        },
+        updated: function () {
+          this.$nextTick(function () {
+            jQfn()
+          })
+        }
+      })
+      $(document).ready(function () {
+        //tableList
+        $('#tableList').DataTable({
+          "pagingType": "full_numbers",
+          "language": {
+            "decimal": "",
+            "emptyTable": "沒有可顯示的資料",
+            "info": "顯示從 _START_ 到 _END_ 共 _TOTAL_ 筆資料",
+            "infoEmpty": "顯示從 0 到 0 共 0 筆資料",
+            "infoFiltered": "(從 _MAX_ 筆篩選出)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "顯示 _MENU_ 筆資料",
+            "loadingRecords": "載入中...",
+            "processing": "執行中...",
+            "search": "篩選資料: ",
+            "zeroRecords": "查無符合資料",
+            "paginate": {
+              "first": "第一筆",
+              "last": "最後一筆",
+              "next": "下一筆",
+              "previous": "上一筆"
+            },
+            "aria": {
+              "sortAscending": ": activate to sort column ascending",
+              "sortDescending": ": activate to sort column descending"
+            }
+          },
+          "order": [[0, "asc"]],
+          scrollY: '25rem',
+          scrollX: true,
+          searching: false,
+          scrollCollapse: true,
+          fixedColumns: {
+            left: 0,
+            right: 1
+          }
+        });
+        //roleTable
+        function format ( d ) {
+          let data = d.subItem.split('<span style=\"display: none;\">');
+          let childTable = '';
+          for (let i=0 ; i<data.length; i++) {
+            let template = ''
+            if (data.length === (i+1)) {
+              template = `
+              <tr>
+                <td width="5%" class='dgc-blank dgc-child dgc-last'></td>
+                <td width="19%">${data[i]}</td>
+                <td width="10%">B2C</td>
+                <td width="10%">0%</td>
+                <td width="10%">5%</td>
+                <td width="18%">5%</td>
+                <td width="18%">5%</td>
+                <td width="10%"></td>
+              </tr>
+              `
+            }
+            else if (i === 0) {
+              template = `
+              <tr class='dgc-first'>
+                <td width="5%" class='dgc-blank dgc-child dgc-first'></td>
+                <td width="19%">資產類別</td>
+                <td width="10%">交易途徑</td>
+                <td width="10%">平台手續費</td>
+                <td width="10%">PA手續費</td>
+                <td width="18%">廠商平台手續費分潤</td>
+                <td width="18%">廠商PA手續費負擔</td>
+                <td width="10%"></td>
+              </tr>
+              `
+            }
+            else {
+              template = `
+              <tr>
+                <td width="5%" class='dgc-blank dgc-child'></td>
+                <td width="19%">${data[i]}</td>
+                <td width="10%">C2C</td>
+                <td width="10%">0%</td>
+                <td width="10%">0%</td>
+                <td width="18%">0%</td>
+                <td width="18%">0%</td>
+                <td width="10%"></td>
+              </tr>
+              `
+            }
+            childTable += template
+          }
+          return '<table cellspacing="0" border="0" style="width: 100%">'+ childTable + '</table>';
+        };
+
+        var table = $('#roleTable').DataTable({
+          "columnDefs": [{ targets: 'no-sort', orderable: false }],
+          "pagingType": "full_numbers",
+          "language": {
+            "decimal":        "",
+            "emptyTable":     "沒有可顯示的資料",
+            "info":           "顯示從 _START_ 到 _END_ 共 _TOTAL_ 筆資料",
+            "infoEmpty":      "顯示從 0 到 0 共 0 筆資料",
+            "infoFiltered":   "(從 _MAX_ 筆篩選出)",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "顯示 _MENU_ 筆資料",
+            "loadingRecords": "載入中...",
+            "processing":     "執行中...",
+            "search":         "篩選資料: ",
+            "zeroRecords":    "查無符合資料",
+            "paginate": {
+              "first":      "第一筆",
+              "last":       "最後一筆",
+              "next":       "下一筆",
+              "previous":   "上一筆"
+            },
+            "aria": {
+              "sortAscending":  ": activate to sort column ascending",
+              "sortDescending": ": activate to sort column descending"
+            }
+          },
+          "order": [[ 0, "desc" ]],
+          scrollY:        '25rem',
+          scrollX:        true, 
+          searching:      false,
+          scrollCollapse: true,
+          fixedColumns:   {
+            left: 0,
+            // right: 1,
+          },
+          "columns": [
+            {
+              "className":      'dgc-control',
+              "orderable":      false,
+              "data":           null,
+              "defaultContent": ''
+            },
+            { "data": "office" },
+            { "data": "subItem" },
+            { "data": "path" },
+            { "data": "platformFee" },
+            { "data": "paFee" },
+            { "data": "shareFee" },
+            { "data": "func" }
+          ],
+          "ordering": false,
+            scrollY:        '25rem',
+            scrollX:        true,
+            searching:      false,
+            scrollCollapse: true,
+            paging:         true,
+        });
+        $('#roleTable tbody').on('click', 'td.dgc-control', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+    
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        });
+      });
+    </script>
+</body>
+
+</html>
