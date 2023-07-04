@@ -1,0 +1,37 @@
+$badgeColor: (
+    "danger": $danger,
+    "warning": darken($warning,5%),
+    "info": $info,
+    "success": $success,
+    "contrast": $contrast,
+    "draft": $text-A,
+);
+
+
+.red-dot {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    border-radius: 3px;
+    background: red;
+}
+
+@each $name, $color in $badgeColor {
+    .badge-#{$name} {
+        display: inline-block;
+        font-size: .75rem;
+        border-radius: .25rem;
+        padding: .125rem .375rem;
+        color: white;
+        background: $color;
+    }
+}
+.badge-contrast{
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    line-height: 22px;
+}

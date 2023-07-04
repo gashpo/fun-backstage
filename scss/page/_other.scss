@@ -1,0 +1,138 @@
+hr{
+  margin: 50px 0 50px;
+}
+.marginTop-1rem{
+  margin-top: 1rem;
+}
+.marginBottom-2rem{
+  margin-bottom: 2rem;
+}
+//table layout
+.w-100{
+  width: 100%;
+}
+.w-5rem{
+  width: 4rem;
+}
+thead.bg-gray{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+td.w-3{
+  width: calc(100% / 3);
+}
+td.w-4{
+  width: calc(100% / 4);
+  span.itemID{
+    &::after{
+      content: ',';
+    }
+    &:last-child::after{
+      content: '';
+    }
+  }
+}
+.m-top-30{
+  margin-top: 30px;
+}
+.text-h6{
+  padding-left: .75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+
+
+
+
+
+/* CP3.1.1_selling-item.html */
+.bfcoin{
+    padding-left: 30px;
+    line-height: 36px;
+    background-image: url(../img/icon/icon-bfcoin.jpg);
+    background-size: 20px auto;
+    background-position: center left;
+    background-repeat: no-repeat;
+  }
+.gamapay{
+  line-height: 36px;
+}
+
+// 3.1.2_selling-item-read.html
+.eventFreebie{
+  display: flex;
+  flex-wrap: wrap;
+  .number{
+    width: 20px;
+  }
+  .content-box{
+    width: calc(100% - 20px);
+  }
+}
+
+
+// 9.2_data-type-list.html
+.data-type-list{
+  .category-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 2.5rem 0;
+    background-color: #fff;
+    ul.scroll-item{
+      flex: 1;
+      padding: 1.5rem;
+      border-right: 1px rgba(0,0,0,.1) solid;
+      &:last-child{
+        border: none;
+      }
+      .category-head{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .category-btn{
+          button{
+            font-size: .85rem;
+            &:last-child{
+              padding-right: 0 !important;
+            }
+            &.b-btn-default[disabled]{
+              color: #e2e2e2 !important;
+              background: none !important;
+            }
+          }
+        }
+      }
+      form{
+        max-height: 40vh;
+        overflow-y: scroll;
+      }
+      li.category-item{
+        label{
+          display: flex;
+          justify-content: space-between;
+          padding: .5rem;
+          color: #727272;
+          span.material-icons{
+            line-height: 24px;
+          }
+        }
+        input{
+          display: none;
+        }
+        input:checked{
+          & + label{
+            background-color: $Primary;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+  
+
+
