@@ -121,6 +121,7 @@ input[type="radio"] {
 }
 
 .b-textarea {
+    display: block;
     width: unset;
     max-width: 100%;
     min-width: 100%;
@@ -143,7 +144,7 @@ input[type="radio"] {
     margin-right: $input-margin-right;
     & > .b-caption {
         max-width: 360px;
-        padding-top: 0.3rem;
+        padding-top: 0.5rem;
         line-height: 1.8;
         &.readonly {
             color: $text-AA;
@@ -163,7 +164,7 @@ input[type="radio"] {
     margin-top: -0.4rem;
 }
 .b-textarea + .b-input-hint {
-    margin-top: -0.8rem;
+    margin-top: -0.4rem;
     padding-right: 0;
 }
 .b-input-box{
@@ -181,12 +182,22 @@ input[type="radio"] {
     }
 }
 .b-input-hint {
-    font-size: 0.8rem;
     display: block;
     width: 100%;
-    line-height: 1;
+    font-size: 0.8rem;
     text-align: right;
+    line-height: 1.5;
     color: $text-AA;
+    &.new{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            display: inline-block;
+            text-align: left;
+            font-size: 0.8rem;
+        }
+    }
 }
 
 // placeholder 點擊後移動到左上方的設置

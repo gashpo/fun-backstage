@@ -89,6 +89,10 @@
                       <div class="b-field-row">
                         <div class="b-input-wrap">
                           <input class="b-input max-w-none mr-none" type="text" placeholder="請輸入文字">
+                          <p class="b-caption new">！備註用欄位區塊(新樣式)</p>
+                        </div>
+                        <div class="b-input-wrap">
+                          <p class="b-caption">！備註用欄位區塊(原樣式)</p>
                         </div>
                       </div>
                     </div>
@@ -133,7 +137,14 @@
                     <div class="b-field-group">
                       <div class="b-field-row">
                         <div class="b-input-wrap">
-                          <input class="b-input width-400 max-w-none mr-none" type="text" v-model="productN" :maxlength="productName.maxlength" :placeholder="productName.placeholder" required><span class="b-input-hint">({{ productN.length }}/{{productName.maxlength}})</span>
+                          <input class="b-input width-400 max-w-none mr-none" type="text" v-model="productN" :maxlength="productName.maxlength" :placeholder="productName.placeholder" required>
+                          <span class="b-input-hint new">
+                            <p class="b-caption">！備註用欄位區塊(新樣式)</p>
+                            <p>({{ productN.length }}/{{productName.maxlength}})</p>
+                          </span>
+                        </div>
+                        <div class="b-input-wrap">
+                          <p class="b-caption">！備註用欄位區塊(原樣式)</p>
                         </div>
                       </div>
                     </div>
@@ -147,6 +158,7 @@
                       <input class="b-input mr-none" type="number" placeholder="請輸入文字">
                       <div class="b-input-wrap gamapay pl-xs">元</div>
                     </div>
+                    <p class="b-caption new">！備註用欄位區塊(新樣式)</p>
                   </div>
                   <div class="b-text-field d-block">
                     <label>Tag input<span>*</span></label>
@@ -286,7 +298,14 @@
                     <label>字數限制<span>*</span></label>
                     <div class="b-field-row">
                       <div class="b-input-wrap">
-                        <textarea class="b-textarea" rows="4" cols="48" v-model="productDescF" :placeholder="productDesc.placeholder" :maxlength="productDesc.maxlength" required></textarea><span class="b-input-hint">({{ productDescF.length }}/{{productDesc.maxlength}})</span>
+                        <textarea class="b-textarea" rows="4" cols="48" v-model="productDescF" :placeholder="productDesc.placeholder" :maxlength="productDesc.maxlength" required></textarea>
+                        <span class="b-input-hint new">
+                          <p class="b-caption">！備註用欄位區塊(新樣式）</p>
+                          <p>({{ productDescF.length }}/{{productDesc.maxlength}})</p>
+                        </span>
+                      </div>
+                      <div class="b-input-wrap">
+                        <p class="b-caption">！備註用欄位區塊(原樣式）</p>
                       </div>
                     </div>
                   </div>

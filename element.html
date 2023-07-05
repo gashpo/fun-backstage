@@ -1449,6 +1449,7 @@ var vm = new Vue({
           <div class="b-field-row">
             <div class="b-input-wrap">
               <input class="b-input max-w-none mr-none" type="text" v-model="form.txtInput" placeholder="請輸入文字">
+              <p class="b-caption new">！備註用欄位區塊(新樣式)</p>
             </div>
           </div>
         </div>
@@ -1464,6 +1465,7 @@ var vm = new Vue({
       &lt;div class="b-input-wrap"&gt;
         &lt;!-- 使用 vue 資料綁定 --&gt;
         &lt;input class="b-input max-w-none mr-none" type="text" v-model="form.txtInput" placeholder="請輸入文字"&gt;
+        &lt;p class="b-caption new"&gt;！備註用欄位區塊(新樣式)&lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1491,7 +1493,10 @@ var vm = new Vue({
           <div class="b-field-row">
             <div class="b-input-wrap">
               <input class="b-input width-400  max-w-none mr-none" type="text" v-model="form.input" maxlength="20" placeholder="請輸入文字">
-              <span class="b-input-hint">({{form.input.length}}/20)</span>
+              <span class="b-input-hint new">
+                <p class="b-caption">！備註用欄位區塊(新樣式)</p>
+                <p>({{form.input.length}}/20)</p>
+              </span>
             </div>
           </div>
         </div>
@@ -1507,7 +1512,10 @@ var vm = new Vue({
       &lt;div class="b-input-wrap"&gt;
         &lt;!-- 使用 vue 資料綁定 --&gt;
         &lt;input class="b-input width-400  max-w-none mr-none" type="text" v-model="form.input" maxlength="20" placeholder="請輸入文字"&gt;
-        &lt;span class="b-input-hint"&gt;({ {form.input.length}}/20)&lt;/span&gt;
+        &lt;span class="b-input-hint"&gt;
+          &lt;p class="b-caption"&gt;！備註用欄位區塊(新樣式)&lt;/p&gt;
+          &lt;p&gt;({ {form.input.length}}/20)&lt;/p&gt;
+        &lt;/span&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -1685,7 +1693,10 @@ var vm = new Vue({
           <div class="b-input-wrap">
             <textarea class="b-textarea" rows="4" cols="48" v-model="form.textarea" placeholder="請輸入文字"
               maxlength="1000" required></textarea>
-            <span class="b-input-hint">({{ form.textarea.length }}/1000)</span>
+            <span class="b-input-hint new">
+              <p class="b-caption">！備註用欄位區塊(新樣式)</p>
+              <p>({{ form.textarea.length }}/1000)</p>
+            </span>
           </div>
         </div>
       </div>
@@ -1697,7 +1708,10 @@ var vm = new Vue({
       &lt;!-- 使用 vue 資料綁定 --&gt;
       &lt;textarea class="b-textarea" rows="4" cols="48" v-model="form.textarea"
         placeholder="請輸入文字" maxlength="1000" required&gt;&lt;/textarea&gt;
-        &lt;span class="b-input-hint"&gt;({ {form.textarea.length}}/1000)&lt;/span&gt;
+        &lt;span class="b-input-hint new"&gt;
+          &lt;p class="b-caption"&gt;！備註用欄位區塊(新樣式)&lt;/p&gt;
+          &lt;p&gt;({ {form.textarea.length}}/1000)&lt;/p&gt;
+        &lt;/span&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;

@@ -145,7 +145,10 @@ input + label {
 
 .b-caption {
     color: $text-A;
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
+    &.new{
+        padding: 0 !important;
+    }
 }
 
 .b-caption-l {

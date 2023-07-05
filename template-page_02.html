@@ -101,10 +101,14 @@
                         <div class="b-field-group">
                           <div class="b-field-row">
                             <div class="b-input-wrap">
-                              <input class="b-input" type="text" v-model="dataInfo.title" maxlength="15" placeholder="請輸入版位標題" required><span class="b-input-hint">({{ dataInfo.title.length }}/15) </span>
+                              <input class="b-input" type="text" v-model="dataInfo.title" maxlength="15" placeholder="請輸入版位標題" required>
+                              <span class="b-input-hint new">
+                                <p class="b-caption">！備註用欄位區塊(新樣式)</p>
+                                <p>({{ dataInfo.title.length }}/15)</p>
+                              </span>
                             </div>
                             <div class="b-input-wrap">
-                              <p class="b-caption">僅用於營運管理，不會顯示在前台</p>
+                              <p class="b-caption">！備註用欄位區塊(原樣式)</p>
                             </div>
                           </div>
                         </div>
